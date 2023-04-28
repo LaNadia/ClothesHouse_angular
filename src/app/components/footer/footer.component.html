@@ -1,0 +1,74 @@
+<div class='footer'>
+    <form id="email" class='form' ref={forma}>
+        <div class='formInner'> 
+            <p class='formFirstLine'>We also make emails </p> 
+            <p  class='formSecondLine'>Recieve updates and offers you’ll actually be interested in. <br/>
+                Unsubscribe any time. 
+            </p>
+        </div>
+        <div>
+            <input ref={input} class=formInput id='emailSubsc' type='email' placeholder="Email" required />
+            <button type="submit" class='subscribeButton' onClick={(e) => onSubmit(e)}></button>
+        </div>
+    </form>
+    <div class='picture'>
+       <div><img alt='banner' src='../../../assets/homeBanner.png'/> </div> 
+        <h3>Clothes House</h3>
+    </div>
+    <div class='categories'>
+            <ul>
+                <h3> SITE </h3>
+                <li> <a href='#'>Trending</a></li>
+                <li> <a href='#'>Journal</a></li>
+                <li> <a href='#'>About Us</a></li>
+            </ul>
+            <ul>
+                <h3> SUPPORT </h3>
+                <li> <a href='#'>Shipping and Delivery</a></li>
+                <li> <a href='#'>Returns Policy</a></li>
+                <li> <a href='#'>Privacy Policy</a></li>
+            </ul>
+    </div>       
+    <div class='address'>
+        <div>
+            <h3>Main City Store</h3>
+            <p>
+                Y Block 1101 Blue Area
+                New York, USA     
+            </p>
+        </div>
+            <div>
+            <h3>New Opened Store</h3>
+            <p>
+               A Block 122 Green Area
+               Malibu, USA     
+            </p>
+         </div>   
+    </div>
+    <div>
+        <div class='rights'>© 2022 Clothes House. All rights reserved.</div>
+    </div>
+</div>
+
+ <!-- {success ?
+        <div class='modal'>
+            <div class='modalInner'>
+                <p>
+                    Subscribtion completed successfully! 
+                    We’ll send you our best articles soon. 
+                </p>
+                <button class='modalButton' onClick={()=> setSuccess(false)}>OK</button>
+            </div>
+        </div>
+:  null}
+
+{ error ? 
+        <div class={.modal}>
+                    <div class={.modalInner}>
+                        <p>
+                            Sorry, a mistake occured. Please try again. 
+                        </p>
+                        <button class={.modalButton} onClick={(e)=> setError(false)}>OK</button>
+                    </div>
+                </div> 
+: null} -->

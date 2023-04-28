@@ -1,0 +1,34 @@
+<header class='header'>
+    <h1 class='logotitle'><a [routerLink]="['/']"> Clothes House</a></h1>
+    <nav class='navigation'>
+        <a [routerLink]="['/']"> Trending</a>
+        <a [routerLink]="['/']"> New Arrival</a>
+        <a [routerLink]="['/']"> Journal</a>
+        <a [routerLink]="['/']"> About Us</a>
+    </nav>
+    
+    <!-- {  location === "/login" || location === "/register" || isAuth ? null
+       : <Link to="/login" className={styles.login}> Login</Link>
+    } -->
+    <!-- {
+        isAuth? 
+        <div>
+            <button
+              className={`${styles.myAccount} ${open? styles.myAccount2 : ''}`}
+              onClick={()=> setOpen(!open)}               
+            >My profile
+            </button> 
+            <ul className={`${styles.menu} ${open? '' : styles.hide}`}>
+                <li><Link to="/myprofile">Me</Link></li>
+                <li><Link to="/" onClick={()=> {dispatch(getShoppingItems([])); dispatch(deleteUser())}}>Logout</Link></li>
+            </ul>
+        </div>  
+
+        : null
+    } -->
+
+<!-- </nav>
+    {  location === "/cart" || location === "/login" || location === "/register" || location === "/checkout"? null
+       : <CartIcon/>
+    } -->
+</header> 
