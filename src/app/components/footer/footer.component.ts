@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FooterService } from './footer-service.service';
+
 
 @Component({
   selector: 'app-footer',
@@ -7,4 +10,30 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
 
+  resultOnSumbit: boolean | null = null;
+  loading: boolean = false;
+
+  constructor(private footerService: FooterService){}
+
+  emailForm: FormGroup = new FormGroup({
+    email: new FormControl<String>('', [Validators.required, Validators.email], )
+  });
+
+  onSubmit(){
+    let email = this.emailForm.value.email;
+    
+    this.loading = true;
+
+    this.footerService.submitForm(email).subscribe((res: any) => {
+      console.log(res);
+      res.ok ? this.resultOnSumbit = true : this.resultOnSumbit = false;
+      this.loading = false;
+    });
+
+  };
+
+  closeModal(){
+    this.resultOnSumbit = null;
+    this.emailForm.reset()
+  }
 }

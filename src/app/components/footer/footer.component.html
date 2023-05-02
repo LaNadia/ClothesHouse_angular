@@ -1,14 +1,27 @@
 <div class='footer'>
-    <form id="email" class='form' ref={forma}>
+    <form id="email" class='form' [formGroup]="emailForm" (ngSubmit)="onSubmit()">
         <div class='formInner'> 
             <p class='formFirstLine'>We also make emails </p> 
             <p  class='formSecondLine'>Recieve updates and offers you’ll actually be interested in. <br/>
                 Unsubscribe any time. 
             </p>
         </div>
-        <div>
-            <input ref={input} class=formInput id='emailSubsc' type='email' placeholder="Email" required />
-            <button type="submit" class='subscribeButton' onClick={(e) => onSubmit(e)}></button>
+        <div style="display: flex;"> 
+            
+            <input formControlName="email" class=formInput type='email' placeholder="Email" required/>
+            <ng-container *ngIf="!loading">
+                <button type="submit" class='subscribeButton'></button>
+            </ng-container>
+            
+            <ng-container *ngIf="loading" #buttonSubmit>
+                <object class='subscribeButton'
+                    type="image/svg+xml"
+                    data="../../../assets/spinnerSmall.svg"
+                    >
+                </object>
+      
+            </ng-container>
+           
         </div>
     </form>
     <div class='picture'>
@@ -48,6 +61,30 @@
     <div>
         <div class='rights'>© 2022 Clothes House. All rights reserved.</div>
     </div>
+</div>
+
+<div *ngIf='resultOnSumbit !== null'>
+    <ng-container *ngIf="resultOnSumbit">
+        <div class='modal'>
+            <div class='modalInner'>
+                <p>
+                    Subscribtion completed successfully! 
+                    We’ll send you our best articles soon. 
+                </p>
+                <button class='modalButton' (click)="closeModal()">OK</button>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!resultOnSumbit">
+        <div class='modal'>
+            <div class='modalInner'>
+                <p>
+                    Sorry, a mistake occured. Please try again. 
+                </p>
+                <button class='modalButton' (click)="closeModal()">OK</button>
+            </div>
+        </div> 
+    </ng-container>
 </div>
 
  <!-- {success ?
