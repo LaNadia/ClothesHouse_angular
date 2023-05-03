@@ -1,9 +1,7 @@
 <h2 class='title'> Trending</h2>
-    <!-- {
-            trendingClothes ?
-            <CardList clothes={trendingClothes} /> :
-            <Spinner />
-    } -->
+
+<app-card-list [data]="trendingClothesList$" [isSubmitting]="isSubmitting$"></app-card-list>
+
 <div class='quote'>
     <div class='text'>“Beautiful collection of indie American brands at a fair price” </div>
     <div class='socials'>

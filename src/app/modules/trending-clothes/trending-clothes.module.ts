@@ -8,12 +8,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { reducers } from '../../store/index'
 import { HttpClientModule } from '@angular/common/http';
 import { GetTrendingClothes } from './services/getTrendingClothes.service';
+import { CardListComponent } from '../card-list/card-list.component';
 
 
 
 @NgModule({
   declarations: [
-    TrendingClothesComponent
+    TrendingClothesComponent,
+    CardListComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { GetTrendingClothes } from './services/getTrendingClothes.service';
     EffectsModule.forFeature([trendingClothesEffects])
   ],
   exports: [
-    TrendingClothesComponent
+    TrendingClothesComponent,
+    CardListComponent
   ],
   providers: [
     GetTrendingClothes

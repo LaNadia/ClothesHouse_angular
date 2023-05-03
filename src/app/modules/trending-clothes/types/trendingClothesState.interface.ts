@@ -1,7 +1,7 @@
 import { trendingClothesDataInterface } from "./trendingClothesData.interface";
 
 export interface trendingClothesState {
-    trendingClothes: trendingClothesDataInterface | [],
+    trendingClothes: trendingClothesDataInterface[] | [],
     isSubmitting: boolean,
     error: string | null
 };
