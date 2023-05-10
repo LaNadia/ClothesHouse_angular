@@ -1,5 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { trendingClothesState } from "../../modules/trending-clothes/types/trendingClothesState.interface";
+import { trendingClothesState } from "../types/trendingIntefaces/trendingClothesState.interface";
 import { GetTrendingClothesAction, GetTrendingClothesActionFailure, GetTrendingClothesActionSuccess } from "../actions/createActions.action";
 
 

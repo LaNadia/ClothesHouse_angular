@@ -11,10 +11,5 @@ export class CardListComponent{
   @Input('data') data!: Observable<any>;
   @Input('isSubmitting') isSubmitting!: Observable<any>;
 
-  constructor(){
-    console.log(this.isSubmitting)
-  }
-
-
 }
 

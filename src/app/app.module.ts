@@ -13,6 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TrendingClothesModule } from './modules/trending-clothes/trending-clothes.module';
 import { CheckUsModule } from './modules/check-us/check-us.module';
+import { NewArrivalModule } from './modules/new-arrival/new-arrival.module';
+import { CardListModule } from './modules/card-list/card-list.module';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { CheckUsModule } from './modules/check-us/check-us.module';
     HttpClientModule,
     TrendingClothesModule,
     CheckUsModule,
+    NewArrivalModule,
+    CardListModule,
     StoreModule.forRoot({ router: routerReducer, }),
     StoreRouterConnectingModule.forRoot({}),
     StoreDevtoolsModule.instrument({

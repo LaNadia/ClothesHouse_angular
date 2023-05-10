@@ -12,14 +12,21 @@ export class CheckUsComponent implements OnInit{
 
   constructor( private api: CheckUsService){}
 
-  productList$!: Observable<CheckUsProduct[]>;
+  productList$!: Observable<CheckUsProduct[] | []>;
+  loading: boolean = false;
 
   ngOnInit(): void {
-    this.productList$ = this.api.getCheckUsPics();
+    this.loading = true;
+    this.getData();
 //      this.api.getCheckUsPics().subscribe((response: any) => {
 //       this.productList$ = response
 //  });
   };
+
+  getData(){
+    this.productList$ = this.api.getCheckUsPics();
+    this.loading = false;
+  }
 
 
 }

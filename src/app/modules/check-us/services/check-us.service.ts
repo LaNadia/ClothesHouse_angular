@@ -11,7 +11,7 @@ export class CheckUsService {
 
   constructor(private http: HttpClient) { }
 
-  getCheckUsPics(): Observable<CheckUsProduct[]> {
+  getCheckUsPics(): Observable<CheckUsProduct[] | []> {
 
     return this.http.get<CheckUsProducts>('https://dummyjson.com/products?limit=5').pipe(
         map((res: CheckUsProducts) => res.products),

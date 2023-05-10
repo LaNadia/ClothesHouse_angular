@@ -3,8 +3,18 @@
         <p class="title" >Check us on Instagram</p>
         <a class="follow" href="https://www.google.com/"> follow us on the gram</a>
     </div>
+
+    <ng-container *ngIf="loading">
+      <object class='spinner'
+          type="image/svg+xml"
+          data="../../../../assets/spinnerBig.svg"
+          >
+      </object>
+    </ng-container>
+
     <div class="pictures">
       <div *ngFor="let item of ( productList$ | async )">
         <img src={{item.images[0]}} />
      </div>
+    </div>
 </div>

@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { trendingClothesState } from "src/app/modules/trending-clothes/types/trendingClothesState.interface";
+import { trendingClothesState } from "src/app/store/types/trendingIntefaces/trendingClothesState.interface";
 
 export const trendingClothesFeatureSelector = createFeatureSelector<trendingClothesState>('trendingClothes');
 

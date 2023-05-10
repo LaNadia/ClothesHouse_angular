@@ -1,0 +1,17 @@
+<h2 class='title'>New Arrival</h2>
+<!-- <div>
+    {
+    loadingArrival ? <Spinner/> : <CardList key={arrivalToShow} clothes={arrivalToShow}/>
+    }
+</div> -->
+<!-- {
+    arrivalToShow < arrivalClothes ? <div className={styles.buttonparent} ><button className={styles.button} onClick={() => loadMoreArrival()}> Load More</button></div> 
+    : null
+}
+{
+  loadingInst ? <Spinner/> : instPictures ? <CheckUsOnInst pics={instPictures} /> : null
+} -->
+
+<app-card-list [data]="newArrivalList$" [isSubmitting]="isSubmitting$"></app-card-list>
+<app-check-us></app-check-us>
+<app-footer></app-footer>

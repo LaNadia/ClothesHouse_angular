@@ -1,4 +1,4 @@
-import { trendingClothesDataInterface } from "./trendingClothesData.interface";
+import { trendingClothesDataInterface } from "../../../modules/trending-clothes/types/trendingClothesData.interface";
 
 export interface trendingClothesState {
     trendingClothes: trendingClothesDataInterface[] | [],

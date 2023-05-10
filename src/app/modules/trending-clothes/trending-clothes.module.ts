@@ -7,17 +7,17 @@ import { trendingClothesEffects } from 'src/app/store/effects/trendingClothesEff
 import { reducers } from '../../store/index'
 import { HttpClientModule } from '@angular/common/http';
 import { GetTrendingClothes } from './services/getTrendingClothes.service';
-import { CardListComponent } from '../card-list/card-list.component';
+import { CardListComponent } from '../card-list/card-list/card-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { CheckUsModule } from '../check-us/check-us.module';
+import { CardListModule } from '../card-list/card-list.module';
 
 
 
 @NgModule({
   declarations: [
     TrendingClothesComponent,
-    CardListComponent,
   ],
   imports: [
     CommonModule,
@@ -26,7 +26,8 @@ import { CheckUsModule } from '../check-us/check-us.module';
     StoreModule.forFeature('trendingClothes', reducers.trendingClothes),
     EffectsModule.forFeature([trendingClothesEffects]),
     FooterModule,
-    CheckUsModule
+    CheckUsModule,
+    CardListModule
   ],
   exports: [
     TrendingClothesComponent,
