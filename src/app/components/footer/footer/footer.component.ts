@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { FooterService } from './footer-service.service';
+import { FooterService } from '../services/footer-service.service';
 
 
 @Component({

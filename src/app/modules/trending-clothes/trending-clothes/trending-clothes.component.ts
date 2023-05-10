@@ -22,7 +22,6 @@ export class TrendingClothesComponent implements OnInit {
     this.store.dispatch(GetTrendingClothesAction());
     this.trendingClothesList$ = this.store.pipe(select(trendingClothesSelector));
     this.isSubmitting$ = this.store.pipe(select(trendingClothesIsSubmittingSelector));
-
-    console.log(this.isSubmitting$)
   };
 }
+

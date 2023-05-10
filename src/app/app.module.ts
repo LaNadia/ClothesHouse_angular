@@ -9,10 +9,10 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TrendingClothesModule } from './modules/trending-clothes/trending-clothes.module';
+import { CheckUsModule } from './modules/check-us/check-us.module';
 
 
 @NgModule({
@@ -20,7 +20,6 @@ import { TrendingClothesModule } from './modules/trending-clothes/trending-cloth
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +27,7 @@ import { TrendingClothesModule } from './modules/trending-clothes/trending-cloth
     ReactiveFormsModule,
     HttpClientModule,
     TrendingClothesModule,
+    CheckUsModule,
     StoreModule.forRoot({ router: routerReducer, }),
     StoreRouterConnectingModule.forRoot({}),
     StoreDevtoolsModule.instrument({
