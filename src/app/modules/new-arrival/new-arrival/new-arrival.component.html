@@ -12,6 +12,10 @@
   loadingInst ? <Spinner/> : instPictures ? <CheckUsOnInst pics={instPictures} /> : null
 } -->
 
-<app-card-list [data]="newArrivalList$" [isSubmitting]="isSubmitting$"></app-card-list>
+<app-card-list [data]="newArrivalList$" [isSubmitting]="isSubmitting$">
+    <div class="buttonContainer">
+        <button *ngIf='length < 20' (click)="loadMore()" class='buttonAdd'>Load More</button>
+    </div>
+</app-card-list>
 <app-check-us></app-check-us>
 <app-footer></app-footer>

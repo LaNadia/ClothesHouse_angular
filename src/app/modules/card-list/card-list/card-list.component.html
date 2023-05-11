@@ -7,6 +7,7 @@
 </ng-container>
 
 <div class='container'>
+
     <div class='content' *ngFor="let item of (data | async)">
         <div class='upperpartcard'> <div>TRENDING</div> <p>Sale: <span> 2k +</span></p></div>
             <div> 
@@ -16,6 +17,7 @@
                     <div class='description'>{{item.title.slice(0, 50)}}. {{item.description.slice(0, 110)+ '...'}}</div> 
                 </div>         
             </div>
-        <button class='buttonAdd' >Add to cart</button>      
+        <button class='buttonAdd'>Add to cart</button>      
     </div>
 </div>
+<ng-content></ng-content>

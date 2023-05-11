@@ -2,19 +2,19 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { catchError, map, retry } from "rxjs/operators";
-import { trendingClothesDataInterface } from "../../trending-clothes/types/trendingClothesData.interface";
+import { JournalStory } from "../types/journalStory.interface";
 
 @Injectable()
-export class getNewArrivalClothes {
+export class GetJournalStory {
 
     constructor(private http: HttpClient) {}
 
-    getNewArrivalClothes(length: number): Observable<trendingClothesDataInterface[]>{
-        return this.http.get<trendingClothesDataInterface[]>(`https://fakestoreapi.com/products?limit=${length}`).pipe(
-            map((res: trendingClothesDataInterface[]) => res),
+    getJournalStory(): Observable<JournalStory[]>{
+        return this.http.get<JournalStory[]>('https://poetrydb.org/random').pipe(
+            map((res: JournalStory[]) => {
+                return res}),
             retry(3),
             catchError((error: HttpErrorResponse) => { console.error('Error emitted', error); return of([]); }),)
     };
 };
     
-

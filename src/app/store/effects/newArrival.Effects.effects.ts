@@ -7,15 +7,17 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { trendingClothesDataInterface } from "src/app/modules/trending-clothes/types/trendingClothesData.interface";
 import { getNewArrivalClothes } from "src/app/modules/new-arrival/services/newArrivalService.service";
 
+
 @Injectable()
 export class newArrivalEffects{
     
     constructor(private actions$: Actions, private api: getNewArrivalClothes){}
     
-    trendingClothes$ = createEffect(() => this.actions$.pipe(
+    newArrival$ = createEffect(() => this.actions$.pipe(
         ofType(GetNewArrivalAction),
-        switchMap(() => { //props
-            return this.api.getNewArrivalClothes().pipe(
+        switchMap(({length}) => { //props
+            console.log(length)
+            return this.api.getNewArrivalClothes(length).pipe(
                 map((newArrivalData: trendingClothesDataInterface[]) => {
                     return GetNewArrivalActionSuccess({newArrivalData})
                     }),

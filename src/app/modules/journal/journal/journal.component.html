@@ -1,0 +1,17 @@
+<div class="container" *ngFor="let story of (currentStory$ | async)">
+    <h1 class="title"> {{ story.title }}</h1>
+    <h3 class="author"> by {{ story.author }} </h3>
+    <div class="story"> {{ story.lines.slice(0, 100) }}</div>
+ 
+</div>
+
+<!-- <div class='relatedContainer'>
+    <h2 class='relatedtitle'> Related stories</h2>
+    <div class='storiesContainer'>
+        {
+        relatedStories ? showRelated(relatedStories) :
+        <Spinner />
+        } 
+    </div>
+</div> -->
+<app-footer></app-footer>

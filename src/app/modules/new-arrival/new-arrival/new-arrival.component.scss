@@ -22,3 +22,20 @@
     align-items: center;
     justify-content: center
 }
+
+.buttonContainer{
+    display: flex;
+    justify-content: center;
+    align-items:center
+}
+
+.buttonAdd{
+    background: #FFFFFF;
+    border-radius: 4.7rem;
+    min-height: 6rem;
+    width: 40%;
+    margin-bottom: 8rem;
+    font-family: 'Helvetica';
+    font-weight: 700;
+    font-size: 1.8rem;
+}

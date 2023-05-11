@@ -15,6 +15,7 @@ import { TrendingClothesModule } from './modules/trending-clothes/trending-cloth
 import { CheckUsModule } from './modules/check-us/check-us.module';
 import { NewArrivalModule } from './modules/new-arrival/new-arrival.module';
 import { CardListModule } from './modules/card-list/card-list.module';
+import { JournalModule } from './modules/journal/journal.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { CardListModule } from './modules/card-list/card-list.module';
     CheckUsModule,
     NewArrivalModule,
     CardListModule,
+    JournalModule,
     StoreModule.forRoot({ router: routerReducer, }),
     StoreRouterConnectingModule.forRoot({}),
     StoreDevtoolsModule.instrument({

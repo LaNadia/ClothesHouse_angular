@@ -1,5 +1,8 @@
 import { Component, Input } from '@angular/core';
+import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { GetNewArrivalAction } from 'src/app/store/actions/createActions.action';
+import { newArrivalSelector, newArrivalIsSubmittingSelector } from 'src/app/store/selectors/newArrivalSelectors';
 
 @Component({
   selector: 'app-card-list[data][isSubmitting]',
@@ -12,4 +15,5 @@ export class CardListComponent{
   @Input('isSubmitting') isSubmitting!: Observable<any>;
 
 }
+
 

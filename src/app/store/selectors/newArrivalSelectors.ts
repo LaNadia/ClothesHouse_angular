@@ -12,3 +12,4 @@ export const newArrivalIsSubmittingSelector = createSelector(
     newArrivalFeatureSelector,
     (newArrival: newArrivalState) => newArrival.isSubmitting
 );
+

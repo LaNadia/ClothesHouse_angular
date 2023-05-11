@@ -27,6 +27,4 @@ export class CheckUsComponent implements OnInit{
     this.productList$ = this.api.getCheckUsPics();
     this.loading = false;
   }
-
-
 }
