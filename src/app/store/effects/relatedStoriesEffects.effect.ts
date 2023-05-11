@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { catchError, map, switchMap } from "rxjs/operators";
-import { GetJournalStoryAction, GetJournalStoryActionFailure, GetJournalStoryActionSuccess, GetNewArrivalAction, GetNewArrivalActionFailure, GetNewArrivalActionSuccess } from "../actions/createActions.action";
+import { GetRelatedStoriesAction, GetRelatedStoriesActionFailure, GetRelatedStoriesActionSuccess } from "../actions/createActions.action";
 import { of } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 import { GetJournalStory } from "src/app/modules/journal/services/journalStory.service";
@@ -9,20 +9,20 @@ import { JournalStory } from "src/app/modules/journal/types/journalStory.interfa
 
 
 @Injectable()
-export class journalStoryEffects{
+export class relatedStoriesEffects{
     
     constructor(private actions$: Actions, private api: GetJournalStory){}
     
-    journalStory$ = createEffect(() => this.actions$.pipe(
-        ofType(GetJournalStoryAction),
-        switchMap(({title}) => { //props
-            return this.api.getJournalStory(title).pipe(
+    relatedStories$ = createEffect(() => this.actions$.pipe(
+        ofType(GetRelatedStoriesAction),
+        switchMap(() => { //props
+            return this.api.getRelatedStories().pipe(
                 map((journalData: JournalStory[]) => {
                     console.log(journalData)
-                    return GetJournalStoryActionSuccess({journalData})
+                    return GetRelatedStoriesActionSuccess({journalData})
                     }),
                 catchError((errorResponse: HttpErrorResponse) => {
-                    return of(GetJournalStoryActionFailure({errors: errorResponse.error}))
+                    return of(GetRelatedStoriesActionFailure({errors: errorResponse.error}))
                 })
             )
         })

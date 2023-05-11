@@ -9,8 +9,15 @@ export class GetJournalStory {
 
     constructor(private http: HttpClient) {}
 
-    getJournalStory(): Observable<JournalStory[]>{
-        return this.http.get<JournalStory[]>('https://poetrydb.org/random').pipe(
+    getJournalStory(title: string): Observable<JournalStory[]>{
+        return this.http.get<JournalStory[]>(`https://poetrydb.org/title/${title}:abs`).pipe(
+            map((res: JournalStory[]) => res),
+            retry(3),
+            catchError((error: HttpErrorResponse) => { console.error('Error emitted', error); return of([]); }),)
+    };
+
+    getRelatedStories(): Observable<JournalStory[]>{
+        return this.http.get<JournalStory[]>('https://poetrydb.org/random/4').pipe(
             map((res: JournalStory[]) => {
                 return res}),
             retry(3),

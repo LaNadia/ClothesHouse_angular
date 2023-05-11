@@ -1,6 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
-import { GetJournalStoryAction, GetJournalStoryActionFailure, GetJournalStoryActionSuccess, GetNewArrivalAction, GetNewArrivalActionFailure, GetNewArrivalActionSuccess} from "../actions/createActions.action";
-import { newArrivalState } from "../types/newArrivalInterfaces/newArrivalState.interface";
+import { GetJournalStoryAction, GetJournalStoryActionFailure, GetJournalStoryActionSuccess} from "../actions/createActions.action";
 import { JournalStoryState } from "../types/journalStoryInterfaces/journalStoryStateInterface.interface";
 
 
@@ -30,6 +29,4 @@ export const journalStoryReducer = createReducer(
             isSubmitting: false,
             error: action.errors
     })),
-
-
 );

@@ -12,18 +12,22 @@ import { newArrivalState } from './types/newArrivalInterfaces/newArrivalState.in
 import { newArrivalReducer } from './reducers/newArrivalReducer';
 import { JournalStoryState } from './types/journalStoryInterfaces/journalStoryStateInterface.interface';
 import { journalStoryReducer } from './reducers/journalStoryReducer';
+import { relatedStoriesReducer } from './reducers/relatedStoriesReducer';
+import { RelatedStoriesState } from './types/journalStoryInterfaces/relatedStoriesStateInterface.interface';
 
 
 export interface State {
   trendingClothes: trendingClothesState,
   newArrival: newArrivalState,
-  journalStory: JournalStoryState
+  journalStory: JournalStoryState,
+  relatedStories: RelatedStoriesState
 }
 
 export const reducers: ActionReducerMap<State> = {
   trendingClothes: trendingClothesReducer,
   newArrival: newArrivalReducer,
   journalStory: journalStoryReducer,
+  relatedStories: relatedStoriesReducer
 };
 
 

@@ -19,5 +19,10 @@ export enum ActionTypesNewArrival {
 export enum ActionTypesJournal {
     GET_JOURNAL_STORY = '[Journal] Get Journal Story',
     GET_JOURNAL_STORY_SUCCESS = '[Journal] Get Journal Story SUCCESS',
-    GET_JOURNAL_STORY_FAILURE = '[Journal] Get Journal Story FAILURE'
+    GET_JOURNAL_STORY_FAILURE = '[Journal] Get Journal Story FAILURE',
+
+    GET_RELATED_STORIES = '[Journal] Get Related Stories',
+    GET_RELATED_STORIES_SUCCESS = '[Journal] Get Related Stories SUCCESS',
+    GET_RELATED_STORIES_FAILURE = '[Journal] Get Related Stories FAILURE',
+
 }

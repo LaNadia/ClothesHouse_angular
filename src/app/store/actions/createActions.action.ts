@@ -37,7 +37,8 @@ export const GetNewArrivalActionFailure = createAction(
 
 //Journal Story
 export const GetJournalStoryAction = createAction(
-    ActionTypesJournal.GET_JOURNAL_STORY
+    ActionTypesJournal.GET_JOURNAL_STORY,
+    props<{title: string}>()
 );
 export const GetJournalStoryActionSuccess = createAction(
     ActionTypesJournal.GET_JOURNAL_STORY_SUCCESS,
@@ -47,3 +48,18 @@ export const GetJournalStoryActionFailure = createAction(
     ActionTypesJournal.GET_JOURNAL_STORY_FAILURE,
     props<{errors: any}>()
 );
+
+//Related Stories
+
+export const GetRelatedStoriesAction = createAction(
+    ActionTypesJournal.GET_RELATED_STORIES
+);
+export const GetRelatedStoriesActionSuccess = createAction(
+    ActionTypesJournal.GET_RELATED_STORIES_SUCCESS,
+    props<{journalData: JournalStory[]}>()
+);
+export const GetRelatedStoriesActionFailure = createAction(
+    ActionTypesJournal.GET_RELATED_STORIES_FAILURE,
+    props<{errors: any}>()
+);
+

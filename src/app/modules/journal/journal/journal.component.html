@@ -1,17 +1,33 @@
-<div class="container" *ngFor="let story of (currentStory$ | async)">
-    <h1 class="title"> {{ story.title }}</h1>
-    <h3 class="author"> by {{ story.author }} </h3>
-    <div class="story"> {{ story.lines.slice(0, 100) }}</div>
- 
+<ng-container *ngIf="isSubmittingCurrentStory$ | async">
+    <object class='spinner' style="height: 50rem"
+        type="image/svg+xml"
+        data="../../../assets/spinnerBig.svg"
+        >
+    </object>
+</ng-container>
+
+<div *ngIf="!(isSubmittingCurrentStory$ | async)">
+    <div class="container" *ngFor="let story of (currentStory$ | async)">
+        <h1 class="title"> {{ story.title }}</h1>
+        <h3 class="author"> by {{ story.author }} </h3>
+        <div class="story"> {{ story.lines.slice(0, 100) }}</div>
+    </div>
 </div>
 
-<!-- <div class='relatedContainer'>
+<div class='relatedContainer'>
     <h2 class='relatedtitle'> Related stories</h2>
-    <div class='storiesContainer'>
-        {
-        relatedStories ? showRelated(relatedStories) :
-        <Spinner />
-        } 
+
+    <ng-container *ngIf="isSubmittingrelatedStories$ | async">
+        <object class='spinner' style="height: 10rem"
+            type="image/svg+xml"
+            data="../../../assets/spinnerBig.svg"
+            >
+        </object>
+    </ng-container>
+
+    <div class='storiesContainer' *ngFor="let story of (relatedStories$ | async)">
+        <a *ngIf="!(isSubmittingrelatedStories$ | async)" [routerLink]="['/journal', story.title]" class="relatedTitle"> {{ story.title }}</a>
     </div>
-</div> -->
+    <button class='button' (click)="refreshRelatedStories()">Get other stories</button>
+</div>
 <app-footer></app-footer>

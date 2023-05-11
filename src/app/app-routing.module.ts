@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'trending', component: TrendingClothesComponent },
   { path: 'newarrival', component: NewArrivalComponent },
-  { path: 'journal', component: JournalComponent },
+  { path: 'journal/:title', component: JournalComponent },
 //  { path: 'footer', component: FooterComponent },
 //  { path: '**', component: NotFoundComponent },
 

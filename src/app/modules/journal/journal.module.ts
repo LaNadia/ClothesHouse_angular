@@ -7,6 +7,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { reducers } from '../../store/index'
 import { journalStoryEffects } from 'src/app/store/effects/journalStoryEffects.effect';
+import { relatedStoriesEffects } from 'src/app/store/effects/relatedStoriesEffects.effect';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -17,8 +19,10 @@ import { journalStoryEffects } from 'src/app/store/effects/journalStoryEffects.e
   imports: [
     CommonModule,
     FooterModule,
+    RouterModule,
     StoreModule.forFeature('journalStory', reducers.journalStory),
-    EffectsModule.forFeature([journalStoryEffects]),
+    StoreModule.forFeature('relatedStories', reducers.relatedStories),
+    EffectsModule.forFeature([journalStoryEffects, relatedStoriesEffects]),
   ],
   exports: [
     JournalComponent
