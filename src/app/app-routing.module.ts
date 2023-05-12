@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { FooterComponent } from './components/footer/footer/footer.component';
 import { TrendingClothesComponent } from './modules/trending-clothes/trending-clothes/trending-clothes.component';
 import { NewArrivalComponent } from './modules/new-arrival/new-arrival/new-arrival.component';
 import { JournalComponent } from './modules/journal/journal/journal.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'trending', component: TrendingClothesComponent },
   { path: 'newarrival', component: NewArrivalComponent },
   { path: 'journal/:title', component: JournalComponent },
-//  { path: 'footer', component: FooterComponent },
+  { path: 'about', component: AboutUsComponent },
 //  { path: '**', component: NotFoundComponent },
 
 

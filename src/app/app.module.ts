@@ -16,6 +16,8 @@ import { CheckUsModule } from './modules/check-us/check-us.module';
 import { NewArrivalModule } from './modules/new-arrival/new-arrival.module';
 import { CardListModule } from './modules/card-list/card-list.module';
 import { JournalModule } from './modules/journal/journal.module';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { FooterModule } from './components/footer/footer.module';
 
 
 @NgModule({
@@ -23,6 +25,7 @@ import { JournalModule } from './modules/journal/journal.module';
     AppComponent,
     HeaderComponent,
     HomeComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { JournalModule } from './modules/journal/journal.module';
     NewArrivalModule,
     CardListModule,
     JournalModule,
+    FooterModule,
     StoreModule.forRoot({ router: routerReducer, }),
     StoreRouterConnectingModule.forRoot({}),
     StoreDevtoolsModule.instrument({

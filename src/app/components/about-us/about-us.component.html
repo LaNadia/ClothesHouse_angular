@@ -1,0 +1,19 @@
+<ul class='container'>
+    <li class="item" *ngFor="let item of info">
+        <div class="name">{{ item.name }}</div>
+        <div class="info">{{ item.insideInfo }}</div>
+    </li>
+</ul>
+
+    <div class="map">
+        <iframe
+            src="https://yandex.ru/map-widget/v1/?ll=-73.992151%2C40.709806&mode=search&ol=geo&ouri=ymapsbm1%3A%2F%2Fgeo%3Fdata%3DCgoyMjQwNTc0NzY1EixVbml0ZWQgU3RhdGVzIG9mIEFtZXJpY2EsIE5ldyBZb3JrLCBOZXcgWW9yayIKDXcBlMIVx9siQg%2C%2C&z=14.47"
+            width="100%"
+            height="400"
+            frameborder="1"
+            allowfullscreen="true"
+            style="position:relative;">
+        </iframe>
+    </div>
+
+<app-footer></app-footer>
