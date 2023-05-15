@@ -14,20 +14,24 @@ import { JournalStoryState } from './types/journalStoryInterfaces/journalStorySt
 import { journalStoryReducer } from './reducers/journalStoryReducer';
 import { relatedStoriesReducer } from './reducers/relatedStoriesReducer';
 import { RelatedStoriesState } from './types/journalStoryInterfaces/relatedStoriesStateInterface.interface';
+import { UserState } from './types/user/userState.interface';
+import { userReducer } from './reducers/userReducer';
 
 
 export interface State {
   trendingClothes: trendingClothesState,
   newArrival: newArrivalState,
   journalStory: JournalStoryState,
-  relatedStories: RelatedStoriesState
+  relatedStories: RelatedStoriesState,
+  user: UserState
 }
 
 export const reducers: ActionReducerMap<State> = {
   trendingClothes: trendingClothesReducer,
   newArrival: newArrivalReducer,
   journalStory: journalStoryReducer,
-  relatedStories: relatedStoriesReducer
+  relatedStories: relatedStoriesReducer,
+  user: userReducer
 };
 
 

@@ -1,7 +1,9 @@
 import { createAction, props } from "@ngrx/store";
-import { ActionTypesJournal, ActionTypesNewArrival, ActionTypesTrending } from "./actions.types";
+import { ActionTypesJournal, ActionTypesNewArrival, ActionTypesRegisterUser, ActionTypesTrending } from "./actions.types";
 import { trendingClothesDataInterface } from "src/app/modules/trending-clothes/types/trendingClothesData.interface";
 import { JournalStory } from "src/app/modules/journal/types/journalStory.interface";
+import { userFormGroupData } from "src/app/modules/auth/types/userFormGroupData";
+import { userDataType } from "src/app/modules/auth/types/userDataType.type";
 
 // Trending clothes
 export const GetTrendingClothesAction = createAction(
@@ -62,4 +64,21 @@ export const GetRelatedStoriesActionFailure = createAction(
     ActionTypesJournal.GET_RELATED_STORIES_FAILURE,
     props<{errors: any}>()
 );
+
+
+// set User
+
+export const RegisterUserAction = createAction(
+    ActionTypesRegisterUser.REGISTER_USER,
+    props<{userData: userFormGroupData}>()
+);
+export const RegisterUserActionSuccess = createAction(
+    ActionTypesRegisterUser.REGISTER_USER_SUCCESS,
+    props<{userData: any}>()
+);
+export const RegisterUserActionFailure = createAction(
+    ActionTypesRegisterUser.REGISTER_USER_FAILURE,
+    props<{errors: any}>()
+);
+
 

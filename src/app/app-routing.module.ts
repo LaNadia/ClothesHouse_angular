@@ -5,6 +5,8 @@ import { TrendingClothesComponent } from './modules/trending-clothes/trending-cl
 import { NewArrivalComponent } from './modules/new-arrival/new-arrival/new-arrival.component';
 import { JournalComponent } from './modules/journal/journal/journal.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
+import { RegisterComponent } from './modules/auth/register/register.component';
+import { LoginComponent } from './modules/auth/login/login.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -13,6 +15,8 @@ const routes: Routes = [
   { path: 'newarrival', component: NewArrivalComponent },
   { path: 'journal/:title', component: JournalComponent },
   { path: 'about', component: AboutUsComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 //  { path: '**', component: NotFoundComponent },
 
 

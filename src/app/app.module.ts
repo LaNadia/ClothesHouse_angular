@@ -18,7 +18,10 @@ import { CardListModule } from './modules/card-list/card-list.module';
 import { JournalModule } from './modules/journal/journal.module';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { FooterModule } from './components/footer/footer.module';
-
+import { AngularFireModule } from '@angular/fire/compat'
+import { FIREBASE_ENVIRONMENT } from './firebase/firebaseEnvironment';
+import { AuthModule } from './modules/auth/auth.module';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { FooterModule } from './components/footer/footer.module';
     CardListModule,
     JournalModule,
     FooterModule,
+    AuthModule,
+    AngularFireModule.initializeApp(FIREBASE_ENVIRONMENT),
+    AngularFireAuthModule,
     StoreModule.forRoot({ router: routerReducer, }),
     StoreRouterConnectingModule.forRoot({}),
     StoreDevtoolsModule.instrument({

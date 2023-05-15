@@ -6,7 +6,9 @@
         <a [routerLink]="['/journal', 'In spring and summer winds may blow']"> Journal</a>
         <a [routerLink]="['/about']"> About Us</a>
     </nav>
-    
+    <button [routerLink]="['/login']">Login</button>
+    <button [routerLink]="['/register']">Register</button>
+    <button (click)="logout()">logout</button>
     <!-- {  location === "/login" || location === "/register" || isAuth ? null
        : <Link to="/login" className={styles.login}> Login</Link>
     } -->

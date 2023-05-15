@@ -1,0 +1,17 @@
+<div class="container">
+    <h1 class="loginTitle">Login</h1>
+
+    <!-- { isLoading ? <Spinner/> : -->
+   
+        <app-auth-form type="login" (loginSubmitted)="login($event)"></app-auth-form>
+
+
+       <div class="toReg"> 
+            New to us? 
+            <div class="toRegLink">
+                <a [routerLink]="['/register']">Register</a>
+            </div>
+        </div>
+
+</div>
+

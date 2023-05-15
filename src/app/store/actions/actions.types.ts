@@ -24,5 +24,10 @@ export enum ActionTypesJournal {
     GET_RELATED_STORIES = '[Journal] Get Related Stories',
     GET_RELATED_STORIES_SUCCESS = '[Journal] Get Related Stories SUCCESS',
     GET_RELATED_STORIES_FAILURE = '[Journal] Get Related Stories FAILURE',
+}
 
+export enum ActionTypesRegisterUser {
+    REGISTER_USER = '[User] Register User',
+    REGISTER_USER_SUCCESS = '[User] Register User SUCCESS',
+    REGISTER_USER_FAILURE = '[User] Register User FAILURE'
 }
