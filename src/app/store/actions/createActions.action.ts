@@ -78,7 +78,7 @@ export const RegisterUserActionSuccess = createAction(
 );
 export const RegisterUserActionFailure = createAction(
     ActionTypesRegisterUser.REGISTER_USER_FAILURE,
-    props<{errors: any}>()
+    props<{errors: string}>()
 );
 
 

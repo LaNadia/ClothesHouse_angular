@@ -5,9 +5,11 @@ import { OAuthCredential } from "firebase/auth";
 
 
 const InitialState: UserState = {
-    email: null,
-    token: null,
-    uid: null,
+    user: {
+        email: null,
+        token: null,
+        uid: null,
+    },
     isSubmitting: false,
     error: null
 };
@@ -18,15 +20,18 @@ export const userReducer = createReducer(
     on(RegisterUserAction,
         (state): UserState => ({
             ...state,
-            isSubmitting: true
+            isSubmitting: true,
+            error: null
     })),
     on(RegisterUserActionSuccess,
         (state, action): UserState => ({
             ...state,
             isSubmitting: false,
-            email: action.userData.email,
-            token: action.userData._delegate.accessToken,
-            uid: action.userData.uid
+            user: {
+                email: action.userData.email,
+                token: action.userData._delegate.accessToken,
+                uid: action.userData.uid
+            }
     })),
     on(RegisterUserActionFailure,
         (state, action): UserState => ({

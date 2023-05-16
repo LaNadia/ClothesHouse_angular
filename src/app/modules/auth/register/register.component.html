@@ -1,12 +1,27 @@
 <div class="container">
     <h1 class="regTitle">Register</h1>
-   
-    <app-auth-form type="register" (registerSubmitted)="register($event)"></app-auth-form>
 
-    <div class="toLogin">
-        Already have an account?
-        <div class="toLoginLink">
-            <a [routerLink]="['/login']">Sign in</a>
+    <ng-container *ngIf="isSubmitting$ | async">
+        <object class='spinner'
+            type="image/svg+xml"
+            data="../../../assets/spinnerBig.svg"
+            >
+        </object>
+    </ng-container>
+
+    <ng-container *ngIf="errors$ | async">
+        <div> {{ errors$ | async }}</div>
+    </ng-container>
+   
+    <ng-container *ngIf="!(isSubmitting$ | async)">
+        <app-auth-form type="register" (registerSubmitted)="register($event)"></app-auth-form>
+
+        <div class="toLogin">
+            Already have an account?
+            <div class="toLoginLink">
+                <a [routerLink]="['/login']">Sign in</a>
+            </div>
         </div>
-    </div>
+    </ng-container>
+   
 </div>

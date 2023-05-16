@@ -25,21 +25,12 @@ console.log(res)
 
   //register
 
-  register( email: string, password: string){
+  register( email: string, password: string): Promise<any>{
 
   return this.fireAuth.createUserWithEmailAndPassword(email, password).then((res)=> {
       alert('Success registration');
-    //  this.router.navigate(['/home']);
       return res?.user
-  
-    }, err => {
-      console.log(err.message)
-      alert('Something went wrong');
-      this.router.navigate(['/register']);
-      return err.message
-    })
-  
-
+  })
 
   };
 

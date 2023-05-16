@@ -16,4 +16,17 @@ export class LoginComponent {
     this.auth.login(data.value.email, data.value.password);
 
   }
+
+
+  // isSubmitting$!: Observable<boolean>;
+  // user$!: Observable<any>;
+  // errors$!: Observable<any>;
+
+  // constructor(private store: Store){}
+
+  // ngOnInit(): void {
+  //   this.user$ = this.store.pipe(select(userSelector));
+  //   this.isSubmitting$ = this.store.pipe(select(userIsSubmittingSelector));
+  //   this.errors$= this.store.pipe(select(errorsSelector));
+  // }
 }
