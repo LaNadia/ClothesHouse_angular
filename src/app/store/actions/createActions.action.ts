@@ -99,3 +99,16 @@ export const LoginUserActionFailure = createAction(
     props<{errors: string}>()
 );
 
+
+//logout
+export const LogoutUserAction = createAction(
+    ActionTypesRegisterUser.LOGOUT_USER,
+);
+export const LogoutUserActionSuccess = createAction(
+    ActionTypesRegisterUser.LOGOUT_USER_SUCCESS
+);
+export const LogoutUserActionFailure = createAction(
+    ActionTypesRegisterUser.LOGOUT_USER_FAILURE,
+    props<{errors: string}>()
+);
+

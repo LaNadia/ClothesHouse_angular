@@ -17,3 +17,8 @@ export const errorsSelector = createSelector(
     userFeatureSelector,
     (user: UserState) => user.error
 );
+
+export const tokenSelector = createSelector(
+    userFeatureSelector,
+    (user: UserState) => user.user.token
+);

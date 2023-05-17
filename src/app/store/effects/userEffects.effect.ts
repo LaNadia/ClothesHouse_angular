@@ -5,6 +5,9 @@ import {
   LoginUserAction,
   LoginUserActionFailure,
   LoginUserActionSuccess,
+  LogoutUserAction,
+  LogoutUserActionFailure,
+  LogoutUserActionSuccess,
   RegisterUserAction,
   RegisterUserActionFailure,
   RegisterUserActionSuccess,
@@ -61,10 +64,28 @@ export class UserEffects {
  )
 );
 
+logoutUser$ = createEffect(() =>
+this.actions$.pipe(
+ ofType(LogoutUserAction),
+ switchMap(() => {
+   return from(this.api.logout()).pipe(
+     map((userData) => {
+         console.log(userData);
+         return LogoutUserActionSuccess();
+         }),
+     catchError((errorResponse: HttpErrorResponse) => {
+         console.log(errorResponse)
+         return of(LogoutUserActionFailure({ errors: errorResponse.message }));
+         })
+   );
+ })
+)
+);
+
   redirectAfterRegistrationOrLogin$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(RegisterUserActionSuccess, LoginUserActionSuccess),
+        ofType(RegisterUserActionSuccess, LoginUserActionSuccess, LogoutUserActionSuccess),
         tap(() => this.router.navigateByUrl('/'))
       ),
     { dispatch: false }

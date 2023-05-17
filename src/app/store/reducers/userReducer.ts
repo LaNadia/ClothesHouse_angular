@@ -1,7 +1,6 @@
 import { createReducer, on } from "@ngrx/store";
 import { UserState } from "../types/user/userState.interface";
-import { LoginUserAction, LoginUserActionFailure, LoginUserActionSuccess, RegisterUserAction, RegisterUserActionFailure, RegisterUserActionSuccess, } from "../actions/createActions.action";
-import { OAuthCredential } from "firebase/auth";
+import { LoginUserAction, LoginUserActionFailure, LoginUserActionSuccess, LogoutUserAction, LogoutUserActionFailure, LogoutUserActionSuccess, RegisterUserAction, RegisterUserActionFailure, RegisterUserActionSuccess, } from "../actions/createActions.action";
 
 
 const InitialState: UserState = {
@@ -31,7 +30,7 @@ export const userReducer = createReducer(
             isSubmitting: false,
             user: {
                 email: action.userData.email,
-                token: action.userData._delegate.accessToken,
+                token: action.userData.apiKey,
                 uid: action.userData.uid
             }
     })),
@@ -55,11 +54,36 @@ export const userReducer = createReducer(
             isSubmitting: false,
             user: {
                 email: action.userData.email,
-                token: action.userData._delegate.accessToken,
+                token: action.userData.apiKey,
                 uid: action.userData.uid
             }
     })),
     on(LoginUserActionFailure,
+        (state, action): UserState => ({
+            ...state,
+            isSubmitting: false,
+            error: action.errors
+    })),
+
+    //logout
+
+    on(LogoutUserAction,
+        (state): UserState => ({
+            ...state,
+            isSubmitting: true,
+            error: null
+    })),
+    on(LogoutUserActionSuccess,
+        (state): UserState => ({
+            ...state,
+            isSubmitting: false,
+            user: {
+                email: null,
+                token: null,
+                uid: null
+            }
+    })),
+    on(LogoutUserActionFailure,
         (state, action): UserState => ({
             ...state,
             isSubmitting: false,
