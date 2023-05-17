@@ -66,7 +66,7 @@ export const GetRelatedStoriesActionFailure = createAction(
 );
 
 
-// set User
+// register User
 
 export const RegisterUserAction = createAction(
     ActionTypesRegisterUser.REGISTER_USER,
@@ -81,4 +81,21 @@ export const RegisterUserActionFailure = createAction(
     props<{errors: string}>()
 );
 
+
+// login
+
+// register User
+
+export const LoginUserAction = createAction(
+    ActionTypesRegisterUser.LOGIN_USER,
+    props<{userData: userFormGroupData}>()
+);
+export const LoginUserActionSuccess = createAction(
+    ActionTypesRegisterUser.LOGIN_USER_SUCCESS,
+    props<{userData: any}>()
+);
+export const LoginUserActionFailure = createAction(
+    ActionTypesRegisterUser.LOGIN_USER_FAILURE,
+    props<{errors: string}>()
+);
 

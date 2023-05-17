@@ -29,5 +29,9 @@ export enum ActionTypesJournal {
 export enum ActionTypesRegisterUser {
     REGISTER_USER = '[User] Register User',
     REGISTER_USER_SUCCESS = '[User] Register User SUCCESS',
-    REGISTER_USER_FAILURE = '[User] Register User FAILURE'
+    REGISTER_USER_FAILURE = '[User] Register User FAILURE',
+
+    LOGIN_USER = '[User] Login User',
+    LOGIN_USER_SUCCESS = '[User] Login User SUCCESS',
+    LOGIN_USER_FAILURE = '[User] Login User FAILURE'
 }

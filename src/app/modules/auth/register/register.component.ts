@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit{
 
   errors$!: Observable<any>;
   isSubmitting$!: Observable<boolean>;
+  
   constructor(private store: Store){}
 
   ngOnInit(): void {
