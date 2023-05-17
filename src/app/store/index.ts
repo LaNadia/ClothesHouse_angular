@@ -31,7 +31,7 @@ export const reducers: ActionReducerMap<State> = {
   newArrival: newArrivalReducer,
   journalStory: journalStoryReducer,
   relatedStories: relatedStoriesReducer,
-  user: userReducer
+  user: userReducer,
 };
 
 

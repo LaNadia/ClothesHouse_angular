@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { AuthService } from 'src/app/modules/auth/services/auth.service';
+import { Observable, from } from 'rxjs';
 import { LogoutUserAction } from 'src/app/store/actions/createActions.action';
+import { currentUrl } from 'src/app/store/selectors/ngrx-store-selectors.selectors';
 import { tokenSelector } from 'src/app/store/selectors/userSelectors';
 
 @Component({
@@ -14,21 +14,19 @@ import { tokenSelector } from 'src/app/store/selectors/userSelectors';
 export class HeaderComponent implements OnInit{
 
   isLoggedIn$!: Observable<string | null>;
+  location!: any;
   open: boolean = false;
 
-  constructor(private auth: AuthService, private router : Router, private store: Store){}
+  constructor(private store: Store){}
 
   ngOnInit(): void {
     this.isLoggedIn$ = this.store.pipe(select(tokenSelector));
-    console.log(this.isLoggedIn$)
+    this.location = this.store.pipe(select(currentUrl));
   }
-
 
   logout(){
     console.log('loguot')
-   // this.auth.logout();
-  //  this.router.navigate(['/home'])
-  this.store.dispatch(LogoutUserAction())
+    this.store.dispatch(LogoutUserAction())
   };
 
   setOpen(){
