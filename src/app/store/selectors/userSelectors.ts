@@ -22,3 +22,18 @@ export const tokenSelector = createSelector(
     userFeatureSelector,
     (user: UserState) => user.user.token
 );
+
+export const displayNameSelector = createSelector(
+    userFeatureSelector,
+    (user: UserState) => user.user.displayName
+);
+
+export const photoUrlSelector = createSelector(
+    userFeatureSelector,
+    (user: UserState) => user.user.photoUrl
+);
+
+export const emailSelector = createSelector(
+    userFeatureSelector,
+    (user: UserState) => user.user.email
+);

@@ -5,7 +5,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
+import { Action, ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
@@ -22,6 +22,19 @@ import { AngularFireModule } from '@angular/fire/compat'
 import { FIREBASE_ENVIRONMENT } from './firebase/firebaseEnvironment';
 import { AuthModule } from './modules/auth/auth.module';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ProfileModule } from './modules/profile/profile.module';
+import { localStorageSync } from 'ngrx-store-localstorage';
+
+
+// ngrx-store-localstorage
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync(
+    {keys: ['trendingClothes', 'newArrival', 'journalStory', 'relatedStories', 'user'],
+    rehydrate: true })(reducer);
+}
+const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
+
+
 
 @NgModule({
   declarations: [
@@ -42,9 +55,10 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     JournalModule,
     FooterModule,
     AuthModule,
+    ProfileModule,
     AngularFireModule.initializeApp(FIREBASE_ENVIRONMENT),
     AngularFireAuthModule,
-    StoreModule.forRoot({ router: routerReducer, }),
+    StoreModule.forRoot({ router: routerReducer }, { metaReducers }),
     StoreRouterConnectingModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

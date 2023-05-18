@@ -8,6 +8,8 @@ const InitialState: UserState = {
         email: null,
         token: null,
         uid: null,
+        displayName: null,
+        photoUrl: null
     },
     isSubmitting: false,
     error: null
@@ -31,7 +33,9 @@ export const userReducer = createReducer(
             user: {
                 email: action.userData.email,
                 token: action.userData.apiKey,
-                uid: action.userData.uid
+                uid: action.userData.uid,
+                displayName: action.userData.displayName,
+                photoUrl: action.userData.photoURL,
             }
     })),
     on(RegisterUserActionFailure,
@@ -55,7 +59,9 @@ export const userReducer = createReducer(
             user: {
                 email: action.userData.email,
                 token: action.userData.apiKey,
-                uid: action.userData.uid
+                uid: action.userData.uid,
+                displayName: action.userData.displayName,
+                photoUrl: action.userData.photoURL,
             }
     })),
     on(LoginUserActionFailure,
@@ -80,7 +86,9 @@ export const userReducer = createReducer(
             user: {
                 email: null,
                 token: null,
-                uid: null
+                uid: null,
+                displayName: null,
+                photoUrl: null
             }
     })),
     on(LogoutUserActionFailure,

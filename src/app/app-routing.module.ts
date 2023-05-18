@@ -7,6 +7,7 @@ import { JournalComponent } from './modules/journal/journal/journal.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { LoginComponent } from './modules/auth/login/login.component';
+import { ProfileComponent } from './modules/profile/profile/profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'about', component: AboutUsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'profile', component: ProfileComponent },
 //  { path: '**', component: NotFoundComponent },
 
 

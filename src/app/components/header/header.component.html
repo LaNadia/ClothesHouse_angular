@@ -10,7 +10,7 @@
         <div>
             <button class="myAccount myAccount2" (click)="setOpen()">My profile </button> 
             <ul class="menu" *ngIf="open">
-                <li><a [routerLink]="['/about']">Me</a></li>
+                <li><a [routerLink]="['/profile']">Me</a></li>
                 <li><a [routerLink]="['/']" (click)="logout()">Logout</a></li>
             </ul>
         </div>  
@@ -22,28 +22,6 @@
 
 </nav>
 
-
-    <!-- <button [routerLink]="['/login']">Login</button>
-    <button [routerLink]="['/register']">Register</button>
-    <button (click)="logout()">logout</button> -->
-
- 
-    <!-- {
-        isAuth? 
-        <div>
-            <button
-              className={`${styles.myAccount} ${open? styles.myAccount2 : ''}`}
-              onClick={()=> setOpen(!open)}               
-            >My profile
-            </button> 
-            <ul className={`${styles.menu} ${open? '' : styles.hide}`}>
-                <li><Link to="/myprofile">Me</Link></li>
-                <li><Link to="/" onClick={()=> {dispatch(getShoppingItems([])); dispatch(deleteUser())}}>Logout</Link></li>
-            </ul>
-        </div>  
-
-        : null
-    } -->
 
 <!-- </nav>
     {  location === "/cart" || location === "/login" || location === "/register" || location === "/checkout"? null
