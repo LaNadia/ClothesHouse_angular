@@ -2,42 +2,46 @@
     <h5 class="leading">My profile</h5>
     <div class="profile">
         <div class="profile_main">
-            <input class="input" type='file' id="input__file">
-                <label htmlFor="input__file" >
-                    <span class="input_button">Choose new photo</span>
-                </label>
-        
-                <!-- <button class="upload_button" disabled={loading} onClick={handleClick}>Upload 1 photo</button>  -->
-                      
-            <img *ngIf="photoUrl$ | async" class="profile_photo" alt="Avatar" [src]="photoUrl$ | async"/>
-            <img *ngIf="!(photoUrl$ | async)" class="profile_photo" alt="Avatar" src="https://media.pn.am/media/issue/197/297/photo/197297.jpg"/>
+            <input class="input" type='file' id="input__file" (change)="handleChange($event.target)">
+            <label for="input__file">
+                <span class="input_button">Choose new photo</span>
+            </label>
 
-       
+            <ng-container *ngIf="uploadedFileName">
+                <div class="info_name"> Uploaded: {{ uploadedFileName}}</div>
+                <button class="upload_button" (click)="changePhoto()">Upload 1 photo</button> 
+            </ng-container>
+            
+
+            <img *ngIf="photoUrl$ | async" class="profile_photo" alt="Avatar" referrerpolicy="no-referrer" [src]="photoUrl$ | async" />
+            <img *ngIf="!(photoUrl$ | async)" class="profile_photo" alt="Avatar"
+                src="https://media.pn.am/media/issue/197/297/photo/197297.jpg" />
+
         </div>
         <form class="info" onSubmit={update}>
             <div>
                 <div class="info_name">Your name:</div>
 
-                        <div>{{displayName$ | async}}</div>
-       
-                        <input name="name" type="text" placeholder="Put your name here..." required onBlur={changeName} />
-  
-                </div>
+                <div>{{displayName$ | async}}</div>
 
-                <div>
-                    <div class="info_name">Your email:</div>
-                        <div>{{ email$ | async }}</div> 
-                </div>
+                <input name="name" type="text" placeholder="Put your name here..." required onBlur={changeName} />
 
-          <!-- <button class="change_button">Change name</button> : <input type="submit" value="Update my name"/> -->
+            </div>
+
+            <div>
+                <div class="info_name">Your email:</div>
+                <div>{{ email$ | async }}</div>
+            </div>
+
+            <!-- <button class="change_button">Change name</button> : <input type="submit" value="Update my name"/> -->
 
         </form>
 
-         <!-- { updated ? 
+        <!-- { updated ? 
             <div class="updated" >
                 Your profile was successfully updated!
                 <button class="upload_button">OK</button>
             </div>
             : null  }  -->
     </div>
-</div>  
+</div>

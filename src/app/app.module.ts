@@ -26,7 +26,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { localStorageSync } from 'ngrx-store-localstorage';
 
 
-// ngrx-store-localstorage
+// ngrx-store-localstorage function
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync(
     {keys: ['trendingClothes', 'newArrival', 'journalStory', 'relatedStories', 'user'],

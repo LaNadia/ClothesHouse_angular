@@ -89,18 +89,23 @@
 }
 
 .info input::placeholder {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-style: italic;
 }
 
 .info input {
     padding: 1rem;
-    width: 100%
+    width: 100%;
+    background-color: rgb(242, 240, 240);
+    background: linear-gradient(135deg, rgb(242, 240, 240), white);
 }
 
 .info_name{
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     text-transform: none;
+    font-size: 1.5rem;
+    font-style: italic;
+    color: black;
 }
 
 @keyframes cf3FadeInOut {
@@ -152,5 +157,5 @@
 }
 
 input[name="name"]::placeholder {
-    font-size: 3rem
+    font-size: 5rem
 }
