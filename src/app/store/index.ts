@@ -1,10 +1,7 @@
 import { isDevMode } from '@angular/core';
 import {
-  ActionReducer,
   ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
+  MetaReducer,
 } from '@ngrx/store';
 import { trendingClothesState } from './types/trendingIntefaces/trendingClothesState.interface';
 import { trendingClothesReducer } from './reducers/trendingClothesReducer';
@@ -17,13 +14,12 @@ import { RelatedStoriesState } from './types/journalStoryInterfaces/relatedStori
 import { UserState } from './types/user/userState.interface';
 import { userReducer } from './reducers/userReducer';
 
-
 export interface State {
-  trendingClothes: trendingClothesState,
-  newArrival: newArrivalState,
-  journalStory: JournalStoryState,
-  relatedStories: RelatedStoriesState,
-  user: UserState
+  trendingClothes: trendingClothesState;
+  newArrival: newArrivalState;
+  journalStory: JournalStoryState;
+  relatedStories: RelatedStoriesState;
+  user: UserState;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -33,7 +29,5 @@ export const reducers: ActionReducerMap<State> = {
   relatedStories: relatedStoriesReducer,
   user: userReducer,
 };
-
-
 
 export const metaReducers: MetaReducer<State>[] = isDevMode() ? [] : [];

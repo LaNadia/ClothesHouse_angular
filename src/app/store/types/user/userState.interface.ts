@@ -1,11 +1,16 @@
 export interface UserState {
-    user: {
-        email: string | null,
-        token: string | null,
-        uid: string | null,
-        displayName: string | null,
-        photoUrl: string | null
-    },
-    isSubmitting: boolean,
-    error: string | null
+  user: {
+    email: string | null;
+    token: string | null;
+    uid: string | null;
+    displayName: string | null;
+    photoUrl: string | null;
+  };
+  isSubmitting: boolean;
+  error: string | null;
+}
+
+export interface nameData {
+  name: string;
+  auth: any;
 }

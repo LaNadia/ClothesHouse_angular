@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Auth, getAuth, updateProfile } from 'firebase/auth';
+import { updateProfile } from 'firebase/auth';
 import {
   getDownloadURL,
   getStorage,
@@ -17,8 +17,6 @@ export class uploadPhotoService {
     const metadata = {
       contentType: 'image/jpeg',
     };
-
-    const photoURL = getDownloadURL(fileRef);
 
     let res: string | boolean | PromiseLike<string | boolean>;
 

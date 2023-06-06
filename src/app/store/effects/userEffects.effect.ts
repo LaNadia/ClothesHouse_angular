@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
 import {
+  ChangeNameUserAction,
+  ChangeNameUserFailure,
+  ChangeNameUserSuccess,
   LoginUserAction,
   LoginUserActionFailure,
   LoginUserActionSuccess,
@@ -16,13 +19,15 @@ import { from, of, catchError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from 'src/app/modules/auth/services/auth.service';
 import { Router } from '@angular/router';
+import { uploadNameService } from 'src/app/modules/profile/services/updateNameSerive.service';
 
 @Injectable()
 export class UserEffects {
   constructor(
     private actions$: Actions,
     private api: AuthService,
-    private router: Router
+    private router: Router,
+    private uploadName: uploadNameService
   ) {}
 
 
@@ -82,11 +87,37 @@ this.actions$.pipe(
 )
 );
 
+changeNameUser$ = createEffect(() =>
+this.actions$.pipe(
+ ofType(ChangeNameUserAction),
+ switchMap(({nameData}) => {
+   return from(this.uploadName.uploadName(nameData.name, nameData.auth)).pipe(
+     map(() => {
+         return ChangeNameUserSuccess({name: nameData.name});
+         }),
+     catchError((errorResponse: HttpErrorResponse) => {
+         console.log(errorResponse)
+         return of(ChangeNameUserFailure({ errors: errorResponse.message }));
+         })
+   );
+ })
+)
+);
+
   redirectAfterRegistrationOrLogin$ = createEffect(
     () =>
       this.actions$.pipe(
         ofType(RegisterUserActionSuccess, LoginUserActionSuccess, LogoutUserActionSuccess),
         tap(() => this.router.navigateByUrl('/'))
+      ),
+    { dispatch: false }
+  );
+
+  reloadPageAfterNameChange$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(ChangeNameUserSuccess),
+        tap(() => location.reload())
       ),
     { dispatch: false }
   );

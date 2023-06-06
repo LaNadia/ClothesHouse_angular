@@ -10,7 +10,7 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { ProfileComponent } from './modules/profile/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full'},
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'trending', component: TrendingClothesComponent },
   { path: 'newarrival', component: NewArrivalComponent },
@@ -19,14 +19,13 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
-//  { path: '**', component: NotFoundComponent },
+  //  { path: '**', component: NotFoundComponent },
 
-
-  { path: '**', redirectTo: 'home'}
+  { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

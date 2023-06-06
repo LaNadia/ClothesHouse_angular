@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable, from, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import {
   displayNameSelector,
   emailSelector,
   photoUrlSelector,
 } from 'src/app/store/selectors/userSelectors';
-import { Auth, User, getAuth, updateProfile } from 'firebase/auth';
+import { User, getAuth } from 'firebase/auth';
 import { uploadPhotoService } from '../services/uploadPhotoService.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { ChangeNameUserAction } from 'src/app/store/actions/createActions.action';
+import { nameData } from 'src/app/store/types/user/userState.interface';
 
 @Component({
   selector: 'app-profile',
@@ -21,16 +24,41 @@ export class ProfileComponent implements OnInit {
   auth: User | null = null;
   uploadedFile: any = null;
   uploadedFileName: string | null = null;
+  nameTyped: string | null = null;
+  name!: FormGroup;
+  isChangeNameCheckboxChecked: boolean = false;
+  @ViewChild('nameInput', { read: ElementRef }) nameInput!: ElementRef;
+  @ViewChild('changeNameCheckbox', { read: ElementRef })
+  changeNameCheckbox!: ElementRef;
 
   constructor(
     private store: Store,
-    private uploadPhotoService: uploadPhotoService
-  ) {}
+    private uploadPhotoService: uploadPhotoService,
+    private fb: FormBuilder
+  ) {
+    this.name = this.fb.group({
+      name: [''],
+    });
+  }
+
+  onSubmit(e: Event) {
+    e.preventDefault();
+    console.log(this.name);
+    let name = this.name.value['name'];
+    this.auth = getAuth().currentUser;
+
+    const nameData: nameData = {
+      name: name,
+      auth: this.auth,
+    };
+
+    this.store.dispatch(ChangeNameUserAction({ nameData: nameData }));
+  }
 
   ngOnInit(): void {
     this.displayName$ = this.store.pipe(select(displayNameSelector));
-    this.photoUrl$ = this.store.pipe(select(photoUrlSelector));
-    this.email$ = this.store.pipe(select(emailSelector));
+    this.photoUrl$! = this.store.pipe(select(photoUrlSelector));
+    this.email$! = this.store.pipe(select(emailSelector));
   }
 
   handleChange(event: any) {
@@ -44,33 +72,11 @@ export class ProfileComponent implements OnInit {
     } else {
       alert('Please upload a JPG/PNG file');
     }
-
-    // if(this.auth.currentUser){
-
-    //     updateProfile(this.auth.currentUser, {
-    //     //  displayName: "Jane Q. User",
-
-    //       photoURL: event.files[0],
-    //     }).then(() => {
-    //       // Profile updated!
-    //       // ...
-    //       // eslint-disable-next-line no-restricted-globals
-    //       event?.preventDefault()
-    //       alert('ok')
-    //     }).catch((error) => {
-    //       // An error occurred
-    //       // ...
-    //       // eslint-disable-next-line no-restricted-globals
-    //       event?.preventDefault()
-    //       alert(' notok')
-    //     });
-    //   }
   }
 
   changePhoto() {
     //hoping for positive response from server
     this.photoUrl$ = of(URL.createObjectURL(this.uploadedFile));
-
 
     this.uploadPhotoService.uploadAvatar(this.uploadedFile, this.auth);
     this.uploadedFile = null;
@@ -81,34 +87,12 @@ export class ProfileComponent implements OnInit {
     return type == 'image/jpeg' || type == 'image/png' ? true : false;
   }
 
-  //  async uploadAvatar(file: any, user: any) {
+  onInputName(e: Event) {
+    console.log(this.nameInput.nativeElement.value);
+    this.nameTyped = this.nameInput.nativeElement.value;
+  }
 
-  //     if (!file) {
-  //           alert("No File Selected")
-  //     } else {
-  //           const storage = getStorage();
-
-  //           const fileRef = ref(storage, user.uid + '.jpg');
-
-  //           const metadata = {
-  //             contentType: 'image/jpeg'
-  //           };
-
-  // console.log('good')
-  //          // loading = true;
-
-  //           const snapshop = await uploadBytesResumable(fileRef, file, metadata);
-
-  //           const photoURL = await getDownloadURL(fileRef);
-
-  //           updateProfile(user, {photoURL});
-
-  //         //  loading = false;
-
-  //         //  console.log(this.auth);
-
-  //         //this.photoUrl$ = of(file)
-  //     }
-
-  //   }
+  isChecked(): void {
+    this.isChangeNameCheckboxChecked = !this.isChangeNameCheckboxChecked;
+  }
 }

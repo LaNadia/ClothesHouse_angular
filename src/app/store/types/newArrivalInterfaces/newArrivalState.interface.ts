@@ -1,8 +1,7 @@
-import { trendingClothesDataInterface } from "../../../modules/trending-clothes/types/trendingClothesData.interface";
+import { trendingClothesDataInterface } from '../../../modules/trending-clothes/types/trendingClothesData.interface';
 
 export interface newArrivalState {
-    newArrival: trendingClothesDataInterface[] | [],
-    isSubmitting: boolean,
-    error: string | null
-};
-  
+  newArrival: trendingClothesDataInterface[] | [];
+  isSubmitting: boolean;
+  error: string | null;
+}

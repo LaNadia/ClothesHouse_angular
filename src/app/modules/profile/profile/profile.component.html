@@ -9,39 +9,55 @@
 
             <ng-container *ngIf="uploadedFileName">
                 <div class="info_name"> Uploaded: {{ uploadedFileName}}</div>
-                <button class="upload_button" (click)="changePhoto()">Upload 1 photo</button> 
+                <button class="upload_button" (click)="changePhoto()">Upload 1 photo</button>
             </ng-container>
-            
 
-            <img *ngIf="photoUrl$ | async" class="profile_photo" alt="Avatar" referrerpolicy="no-referrer" [src]="photoUrl$ | async" />
+
+            <img *ngIf="photoUrl$ | async" class="profile_photo" alt="Avatar" referrerpolicy="no-referrer"
+                [src]="photoUrl$ | async" />
             <img *ngIf="!(photoUrl$ | async)" class="profile_photo" alt="Avatar"
                 src="https://media.pn.am/media/issue/197/297/photo/197297.jpg" />
 
         </div>
-        <form class="info" onSubmit={update}>
-            <div>
-                <div class="info_name">Your name:</div>
 
-                <div>{{displayName$ | async}}</div>
+        <div class="container_info">
 
-                <input name="name" type="text" placeholder="Put your name here..." required onBlur={changeName} />
+            <form class="info" [formGroup]="name" (ngSubmit)="onSubmit($event)">
+                <div>
+                    <div class="info_checkbox">
+                        <div class="info_label">Your name:</div>
+                        <div>
+                            <input style='display:none' type="checkbox" name="changeName" id="changeNameCheckbox"
+                                (change)="isChecked()">
+                            <label for="changeNameCheckbox"><span
+                                    [ngClass]="isChangeNameCheckboxChecked ? 'material-symbols-checked' : 'material-symbols-unchecked'"
+                                    class="material-symbols-outlined">edit_square</span></label>
+                        </div>
+                    </div>
 
-            </div>
+                    <ng-container *ngIf="!isChangeNameCheckboxChecked">
+                        <div class="info_data">{{displayName$ | async}}</div>
+                    </ng-container>
 
-            <div>
-                <div class="info_name">Your email:</div>
-                <div>{{ email$ | async }}</div>
-            </div>
+                    <input formControlName="name" (keyup)="onInputName($event)" #nameInput name="name" type="text"
+                        placeholder="Put your name here..." required *ngIf="isChangeNameCheckboxChecked" />
 
-            <!-- <button class="change_button">Change name</button> : <input type="submit" value="Update my name"/> -->
+                </div>
+                <div>
+                    <div class="info_label">Your email:</div>
+                    <div class="info_data">{{ email$ | async }}</div>
+                </div>
 
-        </form>
+                <button *ngIf="nameTyped" class="change_button">Update my name</button>
 
-        <!-- { updated ? 
+
+            </form>
+
+            <!-- { updated ? 
             <div class="updated" >
                 Your profile was successfully updated!
                 <button class="upload_button">OK</button>
             </div>
             : null  }  -->
+        </div>
     </div>
-</div>
