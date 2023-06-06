@@ -1,7 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { UserState } from '../types/user/userState.interface';
 import {
-  ChangeNameUserAction,
   ChangeNameUserFailure,
   ChangeNameUserSuccess,
   LoginUserAction,
@@ -128,13 +127,6 @@ export const userReducer = createReducer(
   ),
 
   //change Name
-  on(
-    ChangeNameUserAction,
-    (state): UserState => ({
-      ...state,
-      error: null,
-    })
-  ),
   on(
     ChangeNameUserSuccess,
     (state, action): UserState => ({

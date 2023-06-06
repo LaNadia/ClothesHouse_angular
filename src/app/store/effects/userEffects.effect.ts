@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
 import {
-  ChangeNameUserAction,
-  ChangeNameUserFailure,
   ChangeNameUserSuccess,
   LoginUserAction,
   LoginUserActionFailure,
@@ -81,23 +79,6 @@ this.actions$.pipe(
      catchError((errorResponse: HttpErrorResponse) => {
          console.log(errorResponse)
          return of(LogoutUserActionFailure({ errors: errorResponse.message }));
-         })
-   );
- })
-)
-);
-
-changeNameUser$ = createEffect(() =>
-this.actions$.pipe(
- ofType(ChangeNameUserAction),
- switchMap(({nameData}) => {
-   return from(this.uploadName.uploadName(nameData.name, nameData.auth)).pipe(
-     map(() => {
-         return ChangeNameUserSuccess({name: nameData.name});
-         }),
-     catchError((errorResponse: HttpErrorResponse) => {
-         console.log(errorResponse)
-         return of(ChangeNameUserFailure({ errors: errorResponse.message }));
          })
    );
  })

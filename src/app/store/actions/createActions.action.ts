@@ -3,8 +3,6 @@ import { ActionTypesJournal, ActionTypesNewArrival, ActionTypesRegisterUser, Act
 import { trendingClothesDataInterface } from "src/app/modules/trending-clothes/types/trendingClothesData.interface";
 import { JournalStory } from "src/app/modules/journal/types/journalStory.interface";
 import { userFormGroupData } from "src/app/modules/auth/types/userFormGroupData";
-import { userDataType } from "src/app/modules/auth/types/userDataType.type";
-import { nameData } from "../types/user/userState.interface";
 
 // Trending clothes
 export const GetTrendingClothesAction = createAction(
@@ -115,10 +113,6 @@ export const LogoutUserActionFailure = createAction(
 
 
 //changeName
-export const ChangeNameUserAction = createAction(
-    ActionTypesRegisterUser.CHANGE_NAME_USER,
-    props<{nameData: nameData}>()
-);
 export const  ChangeNameUserSuccess = createAction(
     ActionTypesRegisterUser.CHANGE_NAME_USER_SUCCESS,
     props<{name: string}>()

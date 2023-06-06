@@ -39,7 +39,6 @@ export enum ActionTypesRegisterUser {
     LOGOUT_USER_SUCCESS = '[User] Logout User SUCCESS',
     LOGOUT_USER_FAILURE = '[User] Logout User FAILURE',
 
-    CHANGE_NAME_USER = '[User] Change Name User',
     CHANGE_NAME_USER_SUCCESS = '[User] Change Name User SUCCESS',
     CHANGE_NAME_USER_FAILURE = '[User] Change Name User FAILURE',
 }

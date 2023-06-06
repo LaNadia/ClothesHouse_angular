@@ -9,8 +9,7 @@ import {
 import { User, getAuth } from 'firebase/auth';
 import { uploadPhotoService } from '../services/uploadPhotoService.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ChangeNameUserAction } from 'src/app/store/actions/createActions.action';
-import { nameData } from 'src/app/store/types/user/userState.interface';
+import { uploadNameService } from '../services/updateNameSerive.service';
 
 @Component({
   selector: 'app-profile',
@@ -34,6 +33,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private store: Store,
     private uploadPhotoService: uploadPhotoService,
+    private changeNameService: uploadNameService,
     private fb: FormBuilder
   ) {
     this.name = this.fb.group({
@@ -46,13 +46,9 @@ export class ProfileComponent implements OnInit {
     console.log(this.name);
     let name = this.name.value['name'];
     this.auth = getAuth().currentUser;
-
-    const nameData: nameData = {
-      name: name,
-      auth: this.auth,
-    };
-
-    this.store.dispatch(ChangeNameUserAction({ nameData: nameData }));
+    //had to call changeNameService here and then dispatch,
+    //as dispatch here caused error and didnt save user name
+    this.changeNameService.uploadName(name, this.auth)
   }
 
   ngOnInit(): void {
