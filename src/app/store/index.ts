@@ -13,6 +13,8 @@ import { relatedStoriesReducer } from './reducers/relatedStoriesReducer';
 import { RelatedStoriesState } from './types/journalStoryInterfaces/relatedStoriesStateInterface.interface';
 import { UserState } from './types/user/userState.interface';
 import { userReducer } from './reducers/userReducer';
+import { CartState } from './types/cartInterfaces/cartInterface.interface';
+import { cartReducer } from './reducers/cartReducer';
 
 export interface State {
   trendingClothes: trendingClothesState;
@@ -20,6 +22,7 @@ export interface State {
   journalStory: JournalStoryState;
   relatedStories: RelatedStoriesState;
   user: UserState;
+  cart: CartState;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -28,6 +31,7 @@ export const reducers: ActionReducerMap<State> = {
   journalStory: journalStoryReducer,
   relatedStories: relatedStoriesReducer,
   user: userReducer,
+  cart: cartReducer
 };
 
 export const metaReducers: MetaReducer<State>[] = isDevMode() ? [] : [];

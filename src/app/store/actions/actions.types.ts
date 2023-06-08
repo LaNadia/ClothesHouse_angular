@@ -42,3 +42,9 @@ export enum ActionTypesRegisterUser {
     CHANGE_NAME_USER_SUCCESS = '[User] Change Name User SUCCESS',
     CHANGE_NAME_USER_FAILURE = '[User] Change Name User FAILURE',
 }
+
+export enum ActionTypesCart {
+    ADD_ITEM_TO_CART = '[Cart] Add Item To Cart',
+    ADD_ITEM_TO_CART_SUCCESS = '[Cart] Add Item To Cart SUCCESS',
+    ADD_ITEM_TO_CART_FAILURE = '[Cart] Add Item To Cart FAILURE',
+}

@@ -24,6 +24,8 @@ import { AuthModule } from './modules/auth/auth.module';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ProfileModule } from './modules/profile/profile.module';
 import { localStorageSync } from 'ngrx-store-localstorage';
+import { CartModule } from './modules/cart/cart.module';
+import { CartIconComponent } from './components/cart-icon/cart-icon.component';
 
 // ngrx-store-localstorage function
 export function localStorageSyncReducer(
@@ -36,6 +38,7 @@ export function localStorageSyncReducer(
       'journalStory',
       'relatedStories',
       'user',
+      'cart'
     ],
     rehydrate: true,
   })(reducer);
@@ -48,6 +51,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     HeaderComponent,
     HomeComponent,
     AboutUsComponent,
+    CartIconComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +66,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     FooterModule,
     AuthModule,
     ProfileModule,
+    CartModule,
     AngularFireModule.initializeApp(FIREBASE_ENVIRONMENT),
     AngularFireAuthModule,
     StoreModule.forRoot({ router: routerReducer }, { metaReducers }),

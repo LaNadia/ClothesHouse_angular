@@ -10,8 +10,8 @@
         <div>
             <button class="myAccount myAccount2" (click)="setOpen()">My profile </button> 
             <ul class="menu" *ngIf="open">
-                <li><a [routerLink]="['/profile']">Me</a></li>
-                <li><a [routerLink]="['/']" (click)="logout()">Logout</a></li>
+                <li (click)="setOpen()"><a [routerLink]="['/profile']" >Me</a></li>
+                <li (click)="setOpen()"><a [routerLink]="['/']" (click)="logout()">Logout</a></li>
             </ul>
         </div>  
     </ng-container>
@@ -21,10 +21,8 @@
     </ng-container>
 
 </nav>
+<ng-container *ngIf="!((location | async) === '/cart' || (location | async) === '/login' || (location | async) === '/register' || (location | async) === '/checkout')">
+    <app-cart-icon></app-cart-icon>
+</ng-container>
 
-
-<!-- </nav>
-    {  location === "/cart" || location === "/login" || location === "/register" || location === "/checkout"? null
-       : <CartIcon/>
-    } -->
 </header> 

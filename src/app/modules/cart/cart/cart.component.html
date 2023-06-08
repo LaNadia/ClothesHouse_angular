@@ -1,0 +1,49 @@
+<ng-container *ngIf="items; else empty">
+
+
+    <div class="wrapper">
+        <div class="content">
+            <div class="mycart"> My cart</div>
+            <!-- {items.map(function(item: TCard) {
+                            return (
+                                <div key={item.id} class="item">
+                                    <div>
+                                        <div>
+                                            <img src={item.image} alt={item.title}/>
+                                        </div>
+                                    </div>
+                                    <div class="itemInfo">
+                                            <p>{item.price} $ per piece</p>
+                                            <p>{item.title}</p>
+                                            <div class="quantity">
+                                                <button onClick={()=> minusItem(item.id)}
+                                                    disabled={item.quantity === 1 ? true : false} 
+                                                    class={`$".minus} ${document.querySelector('.minus')?.getAttribute('disabled') ? styles.disab : ''}`}
+                                                ></button>
+                                                <div>{item.quantity} piece(s)</div>
+                                                <button onClick={()=> plusItem(item.id)} class=".plus}></button>
+                                            </div>
+                                    </div>
+                                    
+                                    <button onClick={()=> deleteItem(item.id, items)}>✕</button>
+                                </div>
+                            )})} -->
+        </div>
+        <div class="totalContainer">
+            <div class="totalInfo">
+                <!-- <span class="total"> Total:</span>
+                <span>{totalPrice} $</span>
+                <button class="checkout" onClick={()=> onCheckout()}>Checkout</button> -->
+            </div>
+        </div>
+
+    </div>
+
+
+</ng-container>
+
+<ng-template #empty>
+    <div class="wrapper">
+        <div class="emptycart">Your cart is empty.</div>
+    </div>
+</ng-template>

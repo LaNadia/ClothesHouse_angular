@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { ActionTypesJournal, ActionTypesNewArrival, ActionTypesRegisterUser, ActionTypesTrending } from "./actions.types";
+import { ActionTypesCart, ActionTypesJournal, ActionTypesNewArrival, ActionTypesRegisterUser, ActionTypesTrending } from "./actions.types";
 import { trendingClothesDataInterface } from "src/app/modules/trending-clothes/types/trendingClothesData.interface";
 import { JournalStory } from "src/app/modules/journal/types/journalStory.interface";
 import { userFormGroupData } from "src/app/modules/auth/types/userFormGroupData";
@@ -83,8 +83,6 @@ export const RegisterUserActionFailure = createAction(
 
 // login
 
-// register User
-
 export const LoginUserAction = createAction(
     ActionTypesRegisterUser.LOGIN_USER,
     props<{userData: userFormGroupData}>()
@@ -119,5 +117,20 @@ export const  ChangeNameUserSuccess = createAction(
 );
 export const  ChangeNameUserFailure = createAction(
     ActionTypesRegisterUser.CHANGE_NAME_USER_FAILURE,
+    props<{errors: string}>()
+);
+
+
+//add to cart
+export const AddToCartAction = createAction(
+    ActionTypesCart.ADD_ITEM_TO_CART,
+    props<{items: trendingClothesDataInterface[]}>()
+);
+export const AddToCartActionSuccess = createAction(
+    ActionTypesCart.ADD_ITEM_TO_CART_SUCCESS,
+    props<{items: trendingClothesDataInterface[]}>()
+);
+export const AddToCartActionFailure = createAction(
+    ActionTypesCart.ADD_ITEM_TO_CART_FAILURE,
     props<{errors: string}>()
 );

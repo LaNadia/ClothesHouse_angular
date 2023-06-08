@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LogoutUserAction } from 'src/app/store/actions/createActions.action';
 import { currentUrl } from 'src/app/store/selectors/ngrx-store-selectors.selectors';
 import { tokenSelector } from 'src/app/store/selectors/userSelectors';
