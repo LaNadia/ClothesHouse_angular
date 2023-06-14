@@ -1,9 +1,7 @@
 <a [routerLink]="['/cart']" class="cart" id="cart">
     <div class="cartInner">
-        <!-- { shoppingItems && shoppingItems.length > 0 ? 
-            <div class="cartCircle" >
-                <span class="cartCount">{totalItems()}</span>   
+            <div class="cartCircle" *ngIf="(numberOfItems$ | async) !== 0" >
+                <span class="cartCount">{{numberOfItems$ | async}}</span>   
             </div> 
-         : null}            -->
     </div>
 </a>

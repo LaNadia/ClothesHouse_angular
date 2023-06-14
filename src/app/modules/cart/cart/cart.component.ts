@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { cartIsSubmittingSelector, cartItemsSelector } from 'src/app/store/selectors/cartSelectors.selectors';
 
 @Component({
   selector: 'app-cart',
@@ -8,4 +11,5 @@ import { Component } from '@angular/core';
 export class CartComponent {
 
   items = true;
+
 }
