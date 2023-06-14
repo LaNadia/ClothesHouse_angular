@@ -7,17 +7,8 @@
 </ng-container>
 
 <div class='container'>
-
     <div class='content' *ngFor="let item of (data | async)">
-        <div class='upperpartcard'> <div>TRENDING</div> <p>Sale: <span> 2k +</span></p></div>
-            <div> 
-                <img [alt]='item.title' [src]='item.image' class='imagecard'>
-                <div>
-                    <p class='leadingline'>New item for a new decade only for {{item.price}} $</p>
-                    <div class='description'>{{item.title.slice(0, 50)}}. {{item.description.slice(0, 110)+ '...'}}</div> 
-                </div>         
-            </div>
-        <button class='buttonAdd'>Add to cart</button>      
-    </div>
+        <app-card [item]="item" (newItemEvent)="addItem($event)"></app-card>
+    </div> 
 </div>
 <ng-content></ng-content>

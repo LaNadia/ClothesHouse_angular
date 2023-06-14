@@ -26,7 +26,7 @@ export const cartReducer = createReducer(
     (state, action): CartState => ({
       ...state,
       isSubmitting: false,
-      items: action.items
+      items: [ ...state.items, ...action.items]
     })
   ),
   on(

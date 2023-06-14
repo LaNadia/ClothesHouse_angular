@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardListComponent } from './card-list/card-list.component';
+import { CardModule } from '../card/card.module';
 
 
 
@@ -9,7 +10,8 @@ import { CardListComponent } from './card-list/card-list.component';
     CardListComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CardModule
   ],
   exports: [
     CardListComponent
