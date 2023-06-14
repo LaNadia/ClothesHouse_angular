@@ -21,8 +21,11 @@
     </ng-container>
 
 </nav>
-<ng-container *ngIf="!((location | async) === '/cart' || (location | async) === '/login' || (location | async) === '/register' || (location | async) === '/checkout')">
-    <app-cart-icon></app-cart-icon>
-</ng-container>
+
+<div appFloatElement class='carticon'>
+    <ng-container *ngIf="!((location | async) === '/cart' || (location | async) === '/login' || (location | async) === '/register' || (location | async) === '/checkout')">
+        <app-cart-icon></app-cart-icon>
+    </ng-container>
+</div>
 
 </header> 

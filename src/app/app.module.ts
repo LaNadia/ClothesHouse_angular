@@ -26,6 +26,8 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { CartModule } from './modules/cart/cart.module';
 import { CartIconComponent } from './components/cart-icon/cart-icon.component';
+import { FloatElementDirective } from './components/utils/float-element/float-element.directive';
+import { FloatElementModule } from './components/utils/float-element/float-element.module';
 
 // ngrx-store-localstorage function
 export function localStorageSyncReducer(
@@ -67,6 +69,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     AuthModule,
     ProfileModule,
     CartModule,
+    FloatElementModule,
     AngularFireModule.initializeApp(FIREBASE_ENVIRONMENT),
     AngularFireAuthModule,
     StoreModule.forRoot({ router: routerReducer }, { metaReducers }),

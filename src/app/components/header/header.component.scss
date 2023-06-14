@@ -1,9 +1,9 @@
 .header{
     margin: 5rem 7.5rem;
     display: flex;
-    justify-content:space-between;
-    width: 85%;
-    gap: 2rem;
+    justify-content:space-around;
+    width: 75%;
+    gap: 3rem;
 }
 
 .logotitle{
@@ -85,6 +85,15 @@
     cursor: pointer;
     padding: 2rem;
 }
+
+.carticon{
+    position: absolute;
+    top: 4rem;
+    right: 10rem;
+    width: 4.5rem;
+    height: 4.5rem;
+}
+
 
 
 /*адаптив, ну типа */
