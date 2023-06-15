@@ -5,15 +5,15 @@ export const cartSelector = createFeatureSelector<CartState>('cart');
 
 export const cartItemsSelector = createSelector(
     cartSelector,
-  (cart: CartState) => cart.items
+    (cart: CartState) => cart.items
 );
 
 export const cartIsSubmittingSelector = createSelector(
     cartSelector,
-  (cart: CartState) => cart.isSubmitting
+    (cart: CartState) => cart.isSubmitting
 );
 
 export const cartErrorsSelector = createSelector(
     cartSelector,
     (cart: CartState) => cart.error
-  );
+);
