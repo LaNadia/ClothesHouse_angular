@@ -4,13 +4,12 @@ import { CheckUsComponent } from './check-us/check-us.component';
 import { CheckUsService } from './services/check-us.service';
 
 
-
 @NgModule({
   declarations: [
     CheckUsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
   ],
   providers: [
     CheckUsService

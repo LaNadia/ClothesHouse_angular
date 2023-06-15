@@ -12,8 +12,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FooterModule } from 'src/app/components/footer/footer.module';
 import { CheckUsModule } from '../check-us/check-us.module';
 import { CardListModule } from '../card-list/card-list.module';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [
+  { path: '', component: TrendingClothesComponent }
+]
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { CardListModule } from '../card-list/card-list.module';
     EffectsModule.forFeature([trendingClothesEffects]),
     FooterModule,
     CheckUsModule,
-    CardListModule
+    CardListModule,
+    RouterModule.forChild(routes)
   ],
   exports: [
     TrendingClothesComponent,

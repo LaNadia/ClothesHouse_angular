@@ -9,8 +9,11 @@ import { reducers } from 'src/app/store';
 import { EffectsModule } from '@ngrx/effects';
 import { newArrivalEffects } from 'src/app/store/effects/newArrival.Effects.effects';
 import { getNewArrivalClothes } from './services/newArrivalService.service';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [
+  { path: '', component: NewArrivalComponent }
+]
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { getNewArrivalClothes } from './services/newArrivalService.service';
     CardListModule,
     StoreModule.forFeature('newArrival', reducers.newArrival),
     EffectsModule.forFeature([newArrivalEffects]),
+    RouterModule.forChild(routes)
   ],
   providers:[
     getNewArrivalClothes

@@ -8,9 +8,11 @@ import { EffectsModule } from '@ngrx/effects';
 import { reducers } from '../../store/index'
 import { journalStoryEffects } from 'src/app/store/effects/journalStoryEffects.effect';
 import { relatedStoriesEffects } from 'src/app/store/effects/relatedStoriesEffects.effect';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-
+const routes: Routes = [
+  { path: '', component: JournalComponent }
+]
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { RouterModule } from '@angular/router';
     StoreModule.forFeature('journalStory', reducers.journalStory),
     StoreModule.forFeature('relatedStories', reducers.relatedStories),
     EffectsModule.forFeature([journalStoryEffects, relatedStoriesEffects]),
+    RouterModule.forChild(routes)
   ],
   exports: [
     JournalComponent

@@ -5,29 +5,21 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { Action, ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
+import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { TrendingClothesModule } from './modules/trending-clothes/trending-clothes.module';
-import { CheckUsModule } from './modules/check-us/check-us.module';
-import { NewArrivalModule } from './modules/new-arrival/new-arrival.module';
-import { CardListModule } from './modules/card-list/card-list.module';
-import { JournalModule } from './modules/journal/journal.module';
-import { AboutUsComponent } from './components/about-us/about-us.component';
-import { FooterModule } from './components/footer/footer.module';
 import { AngularFireModule } from '@angular/fire/compat';
 import { FIREBASE_ENVIRONMENT } from './firebase/firebaseEnvironment';
 import { AuthModule } from './modules/auth/auth.module';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { ProfileModule } from './modules/profile/profile.module';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { CartModule } from './modules/cart/cart.module';
 import { CartIconComponent } from './components/cart-icon/cart-icon.component';
-import { FloatElementDirective } from './components/utils/float-element/float-element.directive';
 import { FloatElementModule } from './components/utils/float-element/float-element.module';
+import { uploadNameService } from './modules/profile/services/updateNameSerive.service';
 
 // ngrx-store-localstorage function
 export function localStorageSyncReducer(
@@ -52,7 +44,6 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    AboutUsComponent,
     CartIconComponent,
   ],
   imports: [
@@ -60,14 +51,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    TrendingClothesModule,
-    CheckUsModule,
-    NewArrivalModule,
-    CardListModule,
-    JournalModule,
-    FooterModule,
     AuthModule,
-    ProfileModule,
     CartModule,
     FloatElementModule,
     AngularFireModule.initializeApp(FIREBASE_ENVIRONMENT),
@@ -80,9 +64,8 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
       autoPause: true, // Pauses recording actions and state changes when the extension window is not open
     }),
     EffectsModule.forRoot(),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
-  providers: [],
+  providers: [uploadNameService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,28 +1,27 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { TrendingClothesComponent } from './modules/trending-clothes/trending-clothes/trending-clothes.component';
-import { NewArrivalComponent } from './modules/new-arrival/new-arrival/new-arrival.component';
-import { JournalComponent } from './modules/journal/journal/journal.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { LoginComponent } from './modules/auth/login/login.component';
-import { ProfileComponent } from './modules/profile/profile/profile.component';
 import { CartComponent } from './modules/cart/cart/cart.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'trending', component: TrendingClothesComponent },
-  { path: 'newarrival', component: NewArrivalComponent },
-  { path: 'journal/:title', component: JournalComponent },
-  { path: 'about', component: AboutUsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'cart', component: CartComponent},
+  { path: 'trending', 
+    loadChildren:() => import('./modules/trending-clothes/trending-clothes.module').then(m => m.TrendingClothesModule)},
+  { path: 'newarrival',
+    loadChildren:() => import('./modules/new-arrival/new-arrival.module').then(m => m.NewArrivalModule)},
+  { path: 'journal/:title',
+    loadChildren:() => import('./modules/journal/journal.module').then(m => m.JournalModule)},
+  { path: 'about', 
+    loadChildren:() => import('./modules/about-us/about-us.module').then(m => m.NewArrivalModule)},
+  { path: 'profile',
+    loadChildren:() => import('./modules/profile/profile.module').then(m => m.ProfileModule)},
   //  { path: '**', component: NotFoundComponent },
-
   { path: '**', redirectTo: 'home' },
 ];
 
