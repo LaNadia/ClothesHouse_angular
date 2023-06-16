@@ -8,8 +8,8 @@ import { trendingClothesDataInterface } from '../../trending-clothes/types/trend
 })
 export class CardComponent {
   @Input() item: trendingClothesDataInterface | undefined;
-  @Output() newItemEvent = new EventEmitter<number>();
+  @Output() newItemEvent = new EventEmitter<trendingClothesDataInterface>();
   public addNewItem() {
-    this.newItemEvent.emit(this.item?.id);
+    this.newItemEvent.emit(this.item);
   }
 }

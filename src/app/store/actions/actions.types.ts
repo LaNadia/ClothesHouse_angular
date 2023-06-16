@@ -47,4 +47,8 @@ export enum ActionTypesCart {
     ADD_ITEM_TO_CART = '[Cart] Add Item To Cart',
     ADD_ITEM_TO_CART_SUCCESS = '[Cart] Add Item To Cart SUCCESS',
     ADD_ITEM_TO_CART_FAILURE = '[Cart] Add Item To Cart FAILURE',
+
+    CHANGE_CART_QUANTITY = '[Cart] Change cart quantity',
+    CHANGE_CART_QUANTITY_SUCCESS = '[Cart] Change cart quantity SUCCESS',
+    CHANGE_CART_QUANTITY_FAILURE = '[Cart] Change cart quantity FAILURE',
 }

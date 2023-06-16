@@ -6,9 +6,12 @@
     </object>
 </ng-container>
 
-<div class='container'>
-    <div class='content' *ngFor="let item of (data | async)">
-        <app-card [item]="item" (newItemEvent)="addItem($event)"></app-card>
-    </div> 
-</div>
-<ng-content></ng-content>
+<ng-container *ngIf="!(isSubmitting | async) && (data | async)">
+    <div class='container'>
+        <div class='content' *ngFor="let item of (data | async)">
+            <app-card [item]="item" (newItemEvent)="addNewItem($event)"></app-card>
+        </div> 
+    </div>
+    <ng-content></ng-content>
+</ng-container>
+

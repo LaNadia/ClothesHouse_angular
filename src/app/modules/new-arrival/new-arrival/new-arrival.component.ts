@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable, combineLatest } from 'rxjs';
+import { addToCartUtil } from 'src/app/components/utils/add-to-cart-util/add-to-cart-util';
 import { GetNewArrivalAction } from 'src/app/store/actions/createActions.action';
 import { newArrivalSelector, newArrivalIsSubmittingSelector } from 'src/app/store/selectors/newArrivalSelectors';
+import { trendingClothesDataInterface } from '../../trending-clothes/types/trendingClothesData.interface';
 
 @Component({
   selector: 'app-new-arrival',
@@ -14,14 +16,19 @@ export class NewArrivalComponent implements OnInit{
   isSubmitting$!: Observable<any>;
   length: number = 0;
 
+  addNewItem(item: trendingClothesDataInterface){
+ //   console.log(id)
+    this.addToCart.addToCart(item);
+  }
 
-  constructor(private store: Store){}
+
+  constructor(private store: Store, private addToCart: addToCartUtil){}
 
   
   initializeValues(){
     this.store.dispatch(GetNewArrivalAction({length: this.length}));
-    this.newArrivalList$ = this.store.pipe(select(newArrivalSelector));
     this.isSubmitting$ = this.store.pipe(select(newArrivalIsSubmittingSelector));
+    this.newArrivalList$ = this.store.pipe(select(newArrivalSelector));
   };
 
   ngOnInit() {

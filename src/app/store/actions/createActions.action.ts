@@ -134,3 +134,17 @@ export const AddToCartActionFailure = createAction(
     ActionTypesCart.ADD_ITEM_TO_CART_FAILURE,
     props<{errors: string}>()
 );
+
+//  CHANGE_CART_QUANTITY
+export const ChangeCartQuantityAction = createAction(
+    ActionTypesCart.CHANGE_CART_QUANTITY,
+    props<{items: trendingClothesDataInterface[]}>()
+);
+export const ChangeCartQuantitySuccess = createAction(
+    ActionTypesCart.ADD_ITEM_TO_CART_SUCCESS,
+    props<{items: trendingClothesDataInterface[]}>()
+);
+export const ChangeCartQuantityFailure = createAction(
+    ActionTypesCart.ADD_ITEM_TO_CART_FAILURE,
+    props<{errors: string}>()
+);

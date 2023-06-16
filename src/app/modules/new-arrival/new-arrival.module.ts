@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { newArrivalEffects } from 'src/app/store/effects/newArrival.Effects.effects';
 import { getNewArrivalClothes } from './services/newArrivalService.service';
 import { RouterModule, Routes } from '@angular/router';
+import { addToCartUtil } from 'src/app/components/utils/add-to-cart-util/add-to-cart-util';
 
 const routes: Routes = [
   { path: '', component: NewArrivalComponent }
@@ -29,7 +30,8 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   providers:[
-    getNewArrivalClothes
+    getNewArrivalClothes,
+    addToCartUtil
   ],
   exports: [
     NewArrivalComponent
