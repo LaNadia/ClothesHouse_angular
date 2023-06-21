@@ -1,6 +1,6 @@
 <h2 class='title'> Trending</h2>
 
-<app-card-list [data]="trendingClothesList$" [isSubmitting]="isSubmitting$"></app-card-list>
+<app-card-list [data]="trendingClothesList$" [isSubmitting]="isSubmitting$" (newItemEvent)="addNewItem($event)"></app-card-list>
 
 <div class='quote'>
     <div class='text'>“Beautiful collection of indie American brands at a fair price” </div>

@@ -13,6 +13,7 @@ import { FooterModule } from 'src/app/components/footer/footer.module';
 import { CheckUsModule } from '../check-us/check-us.module';
 import { CardListModule } from '../card-list/card-list.module';
 import { RouterModule, Routes } from '@angular/router';
+import { addToCartUtil } from 'src/app/components/utils/add-to-cart-util/add-to-cart-util';
 
 const routes: Routes = [
   { path: '', component: TrendingClothesComponent }
@@ -38,7 +39,8 @@ const routes: Routes = [
     CardListComponent
   ],
   providers: [
-    GetTrendingClothes
+    GetTrendingClothes,
+    addToCartUtil
   ]
 })
 export class TrendingClothesModule { }

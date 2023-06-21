@@ -4,6 +4,7 @@ import { GetTrendingClothesAction } from 'src/app/store/actions/createActions.ac
 import { trendingClothesDataInterface } from '../types/trendingClothesData.interface';
 import { trendingClothesIsSubmittingSelector, trendingClothesSelector } from 'src/app/store/selectors/tredingClothesSelectors';
 import { Observable } from 'rxjs';
+import { addToCartUtil } from 'src/app/components/utils/add-to-cart-util/add-to-cart-util';
 
 
 @Component({
@@ -16,7 +17,12 @@ export class TrendingClothesComponent implements OnInit {
   trendingClothesList$!: Observable<any>;
   isSubmitting$!: Observable<any>;
 
-  constructor(private store: Store){}
+  addNewItem(item: trendingClothesDataInterface){
+    //   console.log(id)
+       this.addToCart.addToCart(item);
+     }
+
+  constructor(private store: Store, private addToCart: addToCartUtil){}
 
   ngOnInit() {
     this.store.dispatch(GetTrendingClothesAction());
