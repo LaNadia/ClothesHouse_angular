@@ -4,8 +4,8 @@
     </div>
 </ng-template>
 
-<ng-container *ngIf="(cartItems$ | async) as items; else empty">
-    <div class="wrapper">
+<ng-container *ngIf="(cartItems$ | async)!.length > 0; else empty">
+    <div class="wrapper" *ngIf="(cartItems$ | async) as items">
         <div class="content">
             <div class="mycart"> My cart</div>
             <div *ngFor="let item of items" class="item">
@@ -29,13 +29,10 @@
         </div>
         <div class="totalContainer">
             <div class="totalInfo">
-                <!-- <span class="total"> Total:</span>
-                <span>{totalPrice} $</span>
-                <button class="checkout" onClick={()=> onCheckout()}>Checkout</button> -->
+                <span class="total"> Total:</span>
+                <span>{{totalPrice}} $</span>
+                <button class="checkout">Checkout</button>
             </div>
         </div>
-
     </div>
-
-
 </ng-container>

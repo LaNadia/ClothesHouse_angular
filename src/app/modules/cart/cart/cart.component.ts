@@ -45,4 +45,12 @@ export class CartComponent implements OnInit {
 
         this.store.dispatch(ChangeCartQuantityAction({ items: itemsLeft }));
     }
+
+    get totalPrice(){
+      return this.cart.reduce(function (previousValue, item) {               
+        if(item.quantity){
+       return previousValue + (Number(item.price) * item.quantity)
+        } else return 0;
+      }, 0).toFixed(2);
+    }
 }
