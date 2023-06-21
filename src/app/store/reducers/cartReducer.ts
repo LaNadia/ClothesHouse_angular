@@ -5,7 +5,6 @@ import {
     AddToCartActionSuccess,
     AddToCartActionFailure,
     ChangeCartQuantityFailure,
-    ChangeCartQuantityAction,
     ChangeCartQuantitySuccess,
 } from '../actions/createActions.action';
 
@@ -44,5 +43,4 @@ export const cartReducer = createReducer(
             error: action.errors,
         })
     ),
-
 );

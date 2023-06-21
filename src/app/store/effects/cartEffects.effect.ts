@@ -6,8 +6,6 @@ import {
   AddToCartActionFailure,
   AddToCartActionSuccess,
   ChangeCartQuantityAction,
-  ChangeCartQuantityFailure,
-  ChangeCartQuantitySuccess
 } from '../actions/createActions.action';
 
 @Injectable()
@@ -30,10 +28,10 @@ export class cartEffects {
   this.actions$.pipe(
     ofType(ChangeCartQuantityAction),
     map(({ items }) => { //props
-      return ChangeCartQuantitySuccess({ items });
+      return AddToCartActionSuccess({ items });
     }),
     catchError((errors: string) => {
-      return of(ChangeCartQuantityFailure({ errors }));
+      return of(AddToCartActionFailure({ errors }));
     })
   )
 );

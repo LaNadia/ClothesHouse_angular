@@ -18,7 +18,6 @@ export class TrendingClothesComponent implements OnInit {
   isSubmitting$!: Observable<any>;
 
   addNewItem(item: trendingClothesDataInterface){
-    //   console.log(id)
        this.addToCart.addToCart(item);
      }
 

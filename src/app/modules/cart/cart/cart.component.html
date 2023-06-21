@@ -18,13 +18,13 @@
                     <p>{{item.price}} $ per piece</p>
                     <p>{{item.title}}</p>
                     <div class="quantity">
-                        <button class="minus" (click)="minusItem(item.id)"></button>
+                        <button class="minus" (click)="changeQuantity(item.id, 'minus')"></button>
                         <div>{{item.quantity}} piece(s)</div>
-                        <button class="plus" (click)="plusItem(item.id)"></button>
+                        <button class="plus" (click)="changeQuantity(item.id, 'plus')"></button>
                     </div>
                 </div>
 
-                <button>✕</button>
+                <button (click)="deleteItem(item.id)">✕</button>
             </div>
         </div>
         <div class="totalContainer">
