@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, OnInit, Output } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { LogoutUserAction } from 'src/app/store/actions/createActions.action';
@@ -11,7 +11,7 @@ import { tokenSelector } from 'src/app/store/selectors/userSelectors';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit{
-
+  
   isLoggedIn$!: Observable<string | null>;
   location!: any;
   open: boolean = false;
@@ -24,12 +24,10 @@ export class HeaderComponent implements OnInit{
   }
 
   logout(){
-    console.log('loguot')
     this.store.dispatch(LogoutUserAction())
   };
 
   setOpen(){
     this.open = !this.open;
-    console.log(this.open)
   }
 }
