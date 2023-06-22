@@ -1,0 +1,96 @@
+<ng-template #loading>
+    <object class='spinner'
+        type="image/svg+xml"
+        data="../../../assets/spinnerBig.svg"
+        >
+    </object>
+</ng-template>
+
+<div class="wrapperCheckout" *ngIf="(cartItems$ | async) as items; else loading">
+    <div class="wrapper">
+        <div class="content">
+            <div class="mycart">Checkout</div>                       
+                <div class="listLittle">
+                        <div *ngFor="let item of items" class="item">
+                            <div class="itemLittle">
+                                <div>
+                                    <div>
+                                        <img [src]="item.image" [alt]="item.title"/>
+                                    </div>
+                                </div>
+                                <div class="itemInfoLittle">
+                                        <p>{{ number(item.price) * (item.quantity ? item.quantity : 1) }} $</p>
+                                        <p>{{ item.title.slice(0, 60)+ '...' }}</p>
+                                </div>
+                                <div class="piecesLittle">{{ item.quantity }} piece(s)</div>
+                            </div>
+                        </div>
+                </div>
+                {{ items.length > 5 ? <div class="arrow"></div> : null}}
+            </div>
+        <div class="totalContainer"> 
+                <div class="totalInfo">
+                    <span class="total"> Total:</span>
+                    <span>{{ totalPrice }} $</span>
+                </div>
+        </div>
+    </div>
+    <div class="wrapperForm"> 
+            <form class="formCheckout" (ngSubmit)="onSubmit($event)" [formGroup]="orderData">
+                <input name="name" type="text" [attr.value]="name$ | async" formControlName="name" required/> 
+                <input name="email" type="email" [attr.value]="email$ | async" formControlName="email" required/> 
+                <input name="tel" type="tel" placeholder="Phone" formControlName="phone" required/>
+                <input name="address" type="text" placeholder="Address"  formControlName="address" required/>
+                <button class="payment" type="submit" [disabled]="orderData.invalid">Proceed to payment</button>
+            </form>
+        
+    </div>
+    </div>
+        <div [ngClass]="success ? 'orderOk' : 'orderHide'">
+            Your order has been successfully created!
+            <button (click)="onSubmit($event)" class="upload_button">OK</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+<ng-container *ngIf="(cartItems$ | async); else loading">
+    <div class="wrapper" *ngIf="(cartItems$ | async) as items">
+        <div class="content">
+            <div class="mycart"> My cart</div>
+            <div *ngFor="let item of items" class="item">
+                <div>
+                    <div>
+                        <img [src]="item.image" [alt]="item.title" />
+                    </div>
+                </div>
+                <div class="itemInfo">
+                    <p>{{item.price}} $ per piece</p>
+                    <p>{{item.title}}</p>
+                    <div class="quantity">
+                        <button class="minus" (click)="changeQuantity(item.id, 'minus')"></button>
+                        <div>{{item.quantity}} piece(s)</div>
+                        <button class="plus" (click)="changeQuantity(item.id, 'plus')"></button>
+                    </div>
+                </div>
+                <button (click)="deleteItem(item.id)">✕</button>
+            </div>
+        </div>
+        <div class="totalContainer">
+            <div class="totalInfo">
+                <span class="total"> Total:</span>
+                <span>{{totalPrice}} $</span>
+                <button class="checkout" [routerLink]="['/checkout']">Checkout</button>
+            </div>
+        </div>
+    </div>
+</ng-container> -->

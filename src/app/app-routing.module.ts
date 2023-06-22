@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { LoginComponent } from './modules/auth/login/login.component';
 import { CartComponent } from './modules/cart/cart/cart.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,8 +22,10 @@ const routes: Routes = [
     loadChildren:() => import('./modules/about-us/about-us.module').then(m => m.NewArrivalModule)},
   { path: 'profile',
     loadChildren:() => import('./modules/profile/profile.module').then(m => m.ProfileModule)},
-  //  { path: '**', component: NotFoundComponent },
-  { path: '**', redirectTo: 'home' },
+  { path: 'checkout',
+    loadChildren:() => import('./modules/checkout/checkout.module').then(m => m.CheckoutModule)},
+  { path: '404', component: NotFoundComponent},
+  { path: '**', redirectTo: '404', pathMatch: 'full' },
 ];
 
 @NgModule({

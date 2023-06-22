@@ -20,6 +20,7 @@ import { CartModule } from './modules/cart/cart.module';
 import { CartIconComponent } from './components/cart-icon/cart-icon.component';
 import { FloatElementModule } from './components/utils/float-element/float-element.module';
 import { uploadNameService } from './modules/profile/services/updateNameSerive.service';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 // ngrx-store-localstorage function
 export function localStorageSyncReducer(
@@ -45,6 +46,7 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     HeaderComponent,
     HomeComponent,
     CartIconComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
