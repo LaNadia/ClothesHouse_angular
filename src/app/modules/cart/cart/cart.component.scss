@@ -3,7 +3,7 @@
     flex-direction: row;
     width: 70%;
     margin: 7rem auto;
-    gap: 1rem;  
+    gap: 1rem;
 }
 
 .content {
@@ -183,6 +183,7 @@
     justify-content:flex-start;
     width: 100%;
     overflow: auto;
+    scroll-behavior: smooth;
 }
 
 .itemInfoLittle{
@@ -229,8 +230,12 @@
     font-size: 2rem;
 }
 
-
-.orderOk{
+.orderShow{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
     width: 60rem;
     height: 15rem;
     background-color: white;
@@ -238,19 +243,17 @@
     font-size: 2rem;
     text-transform: uppercase;
     font-weight: 700;
-    text-align:center;
-    position: absolute;
-    left: 35%;
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
     border: 1px solid black;
     display: flex;
     flex-direction: column; 
     justify-content: center;
     align-items: center;
-    gap: 2rem 
+    gap: 2rem;
+    padding: 1rem;
 }
 
-.orderOk button{
+.orderShow button{
     order: 0;
     width: 12rem;
     background-color: #FFF;
@@ -279,18 +282,52 @@
     display: block;
     font-size: 2rem;
     height: 6rem;
+    position: relative;
 }
 
 .arrow{
    width: 100%;
    margin-top: 2rem;
    height: 0.1rem;
+   cursor: pointer;
 }
 
 .arrow::after { 
     content: url('../../../../assets/arrow.png');
 } 
 
+.spinner {
+    margin: 0 35%;
+}
+
+
+.blur{
+    backdrop-filter: blur(1px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spinner-small{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 4rem;
+    padding: 0 !important;
+}
+
+
+@media (min-width: 1010px){
+    .totalContainer{
+       position: sticky;
+       top: 1rem;
+    }
+}
 
 @media (max-width: 1010px) and (min-width: 375px){
     .wrapper{
@@ -304,7 +341,8 @@
     } 
     .totalContainer{
         width: 100%;
-        height: 30rem;
+        height: 27rem;
+        margin-top: 3.5rem;
     }
     .formCheckout{
         width: 143%;   
@@ -364,11 +402,9 @@
 
 }
 
+// @media (max-width: 1200px) and (min-width: 800px){
 
+//     .formCheckout{
 
-@media (max-width: 1200px) and (min-width: 800px){
-
-    .formCheckout{
-
-    }
-}
+//     }
+// }
