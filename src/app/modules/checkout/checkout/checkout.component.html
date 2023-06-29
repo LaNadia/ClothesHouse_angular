@@ -54,7 +54,7 @@
             <input name="tel" type="tel" placeholder="Phone" formControlName="phone" required />
             <input name="address" type="text" placeholder="Address" formControlName="address" required />
             <ng-container *ngIf="!isSubmitting; else loadingSmall">
-                <button class="payment" type="submit" [disabled]="orderData.invalid">Create an order</button>
+                <button class="payment" type="submit" [disabled]="orderData.invalid" [ngClass]="orderData.invalid ? 'payment_disabled' : ''">Create an order</button>
             </ng-container>
         </form>
 

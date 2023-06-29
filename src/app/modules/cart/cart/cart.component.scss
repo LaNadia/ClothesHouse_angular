@@ -273,16 +273,21 @@
 }
 
 .payment{
-    background: #018849;
-    color: #fff;
+    background: #018849 !important;
+    color: #fff !important;
     letter-spacing: 0.2rem;
     text-transform: uppercase;
     text-align: center;
-    cursor: pointer;
     display: block;
     font-size: 2rem;
     height: 6rem;
     position: relative;
+}
+
+.payment_disabled{
+    background: #7d817f !important;
+    color: #fff !important;
+    cursor: not-allowed;
 }
 
 .arrow{
